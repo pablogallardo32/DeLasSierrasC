@@ -1,0 +1,9 @@
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\bin\Debug\CapaLN.dll
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\bin\Debug\CapaLN.pdb
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\bin\Debug\CapaDA.dll
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\bin\Debug\CapaNE.dll
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\bin\Debug\CapaDA.pdb
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\bin\Debug\CapaNE.pdb
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\obj\Debug\CapaLN.csprojResolveAssemblyReference.cache
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\obj\Debug\CapaLN.dll
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaLN\obj\Debug\CapaLN.pdb
