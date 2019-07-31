@@ -1,0 +1,5 @@
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaNE\bin\Debug\CapaNE.dll
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaNE\bin\Debug\CapaNE.pdb
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaNE\obj\Debug\CapaNE.dll
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaNE\obj\Debug\CapaNE.pdb
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\CapaNE\obj\Debug\CapaNE.csprojResolveAssemblyReference.cache
