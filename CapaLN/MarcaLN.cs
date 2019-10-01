@@ -36,5 +36,10 @@ namespace CapaLN
         {
             return MarcaDA.EliminarMarca(mar);
         }
+
+       public List<MarcaNE> TraerUltimoIDMarca()
+       {
+           return ObjetoMarcaDA.TraerUltimoIDMarca();
+       }
     }
 }

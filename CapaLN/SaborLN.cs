@@ -36,5 +36,10 @@ namespace CapaLN
         {
             return SaborDA.EliminarSabor(sab);
         }
+
+        public List<SaborNE> TraerUltimoIDSabor()
+        {
+            return ObjetoSaborDA.TraerUltimoIDSabor();
+        }
     }
 }

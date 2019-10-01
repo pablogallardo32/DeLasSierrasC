@@ -35,5 +35,10 @@ namespace CapaLN
         {
             return RubroDA.EliminarRubro(rub);
         }
+
+        public List<RubroNE> TraerUltimoIDRubro()
+        {
+            return ObjetoRubroDA.TraerUltimoIDRubro();
+        }
     }
 }

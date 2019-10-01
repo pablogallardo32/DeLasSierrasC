@@ -36,5 +36,10 @@ namespace CapaLN
         {
             return DetalleDA.EliminarDetalle(det);
         }
+
+        public List<DetalleNE> TraerUltimoIDDetalle()
+        {
+            return ObjetoDetalleDA.TraerUltimoIDDetalle();
+        }
     }
 }

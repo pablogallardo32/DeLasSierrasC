@@ -36,5 +36,10 @@ namespace CapaLN
         {
             return TipoDA.EliminarTipo(tip);
         }
+
+        public List<TipoNE> TraerUltimoIDTipo()
+        {
+            return ObjetoTipoDA.TraerUltimoIDTipo();
+        }
     }
 }

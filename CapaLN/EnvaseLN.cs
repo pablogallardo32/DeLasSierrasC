@@ -36,5 +36,10 @@ namespace CapaLN
         {
             return EnvaseDA.EliminarEnvase(env);
         }
+
+        public List<EnvaseNE> TraerUltimoIDEnvase()
+        {
+            return ObjetoEnvaseDA.TraerUltimoIDEnvase();
+        }
     }
 }
