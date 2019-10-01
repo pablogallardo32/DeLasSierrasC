@@ -17,6 +17,21 @@ namespace CapaDA
     public class ProveedorDA
     {
 
+        public DataTable LlenarComboRubro()
+        
+        {
+            IDbConnection con = DBComun.Conexion();
+            con.Open();
+            SqlDataAdapter _Command = new SqlDataAdapter("SELECT NombreRubro From Rubro", con as SqlConnection);
+
+            DataTable dt= new DataTable();
+            _Command.Fill(dt);
+            return dt;
+
+        }
+
+
+
         public static int AgregarProveedor(ProveedorNE pNE)
         {
             IDbConnection con = CapaDA.DBComun.Conexion();
@@ -26,6 +41,7 @@ namespace CapaDA
             Comand.Parameters.Add(new SqlParameter("@Rubro", pNE.Rubro));
             Comand.Parameters.Add(new SqlParameter("@TelVendedor", pNE.TelefonoVendedor));
             Comand.Parameters.Add(new SqlParameter("@TelRepartidor", pNE.TelefonoRepartidor));
+            Comand.Parameters.Add(new SqlParameter("@NombreEmpresa", pNE.NombreEmpresa));
 
             int Resultado = Comand.ExecuteNonQuery();
             con.Close();
@@ -84,6 +100,41 @@ namespace CapaDA
             return Lista;
         }
 
+        public List<ProveedorNE> TraerUltimoNumeroProveedor()
+        {
+            IDbConnection con = DBComun.Conexion();
+            con.Open();
+            SqlCommand _Command = new SqlCommand("SELECT( max(NumeroProveedor)+1) from Proveedor", con as SqlConnection);
+            // _Command.CommandType = CommandType.StoredProcedure;
+            IDataReader reader = _Command.ExecuteReader();
+            List<ProveedorNE> Lista = new List<ProveedorNE>();
+            while (reader.Read())
+            {
+                ProveedorNE ObjetoProveedorNE = new ProveedorNE();
+                
+                ObjetoProveedorNE.NumeroProveedor = Convert.ToString(reader.GetInt32(0));
+               
+                Lista.Add(ObjetoProveedorNE);
+            }
+            con.Close();
+            return Lista;
+        }
+    //    public int TraerUltimoNumeroProveedor()
+    //    {
+    //        IDbConnection con = DBComun.Conexion();
+    //        con.Open();
+    //        SqlCommand Command = new SqlCommand("SELECT max(NumeroProveedor) from Proveedor ", con as SqlConnection);
+    ////        int a = Convert.ToDouble(Command);
+    //        DataTable dt = new DataTable();
+    //        SqlDataAdapter da = new SqlDataAdapter(Command);
+    //      //  Convert.ToInt64(Command);
+    //        da.Fill(dt);
+    //       // SqlCommand Resultado = Command; //  Command.ExecuteNonQuery();
+    //        con.Close();
+    //       // return Resultado;
+    //        return Convert.ToInt16(Command);
 
+    //    }
+
+        }
     }
-}

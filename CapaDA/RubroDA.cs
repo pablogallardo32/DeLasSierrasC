@@ -98,5 +98,26 @@ namespace CapaDA
             con.Close();
             return Resultado;
         }
+
+
+        public List<RubroNE> TraerUltimoIDRubro()
+        {
+            IDbConnection con = DBComun.Conexion();
+            con.Open();
+            SqlCommand _Command = new SqlCommand("SELECT( max(IDRubro)+1) from Rubro", con as SqlConnection);
+            // _Command.CommandType = CommandType.StoredProcedure;
+            IDataReader reader = _Command.ExecuteReader();
+            List<RubroNE> Lista = new List<RubroNE>();
+            while (reader.Read())
+            {
+                RubroNE ObjetoRubroNE = new RubroNE();
+
+                ObjetoRubroNE.IDRubro = reader.GetInt32(0);
+
+                Lista.Add(ObjetoRubroNE);
+            }
+            con.Close();
+            return Lista;
+        }
     }
 }

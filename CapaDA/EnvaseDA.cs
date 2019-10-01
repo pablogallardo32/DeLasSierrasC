@@ -99,5 +99,25 @@ namespace CapaDA
             con.Close();
             return Resultado;
         }
+
+        public List<EnvaseNE> TraerUltimoIDEnvase()
+        {
+            IDbConnection con = DBComun.Conexion();
+            con.Open();
+            SqlCommand _Command = new SqlCommand("SELECT( max(IDEnvase)+1) from Envase", con as SqlConnection);
+            // _Command.CommandType = CommandType.StoredProcedure;
+            IDataReader reader = _Command.ExecuteReader();
+            List<EnvaseNE> Lista = new List<EnvaseNE>();
+            while (reader.Read())
+            {
+                EnvaseNE ObjetoEnvaseNE = new EnvaseNE();
+
+                ObjetoEnvaseNE.IDEnvase = reader.GetInt32(0);
+
+                Lista.Add(ObjetoEnvaseNE);
+            }
+            con.Close();
+            return Lista;
+        }
     }
 }

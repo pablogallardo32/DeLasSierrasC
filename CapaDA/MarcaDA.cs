@@ -100,6 +100,26 @@ namespace CapaDA
                 con.Close();
                 return Resultado;
             }
+
+            public List<MarcaNE> TraerUltimoIDMarca()
+            {
+                IDbConnection con = DBComun.Conexion();
+                con.Open();
+                SqlCommand _Command = new SqlCommand("SELECT( max(IDMarca)+1) from Marca", con as SqlConnection);
+                // _Command.CommandType = CommandType.StoredProcedure;
+                IDataReader reader = _Command.ExecuteReader();
+                List<MarcaNE> Lista = new List<MarcaNE>();
+                while (reader.Read())
+                {
+                    MarcaNE ObjetoMarcaNE = new MarcaNE();
+
+                    ObjetoMarcaNE.IDMarca = reader.GetInt32(0);
+
+                    Lista.Add(ObjetoMarcaNE);
+                }
+                con.Close();
+                return Lista;
+            }
         }
     }
 

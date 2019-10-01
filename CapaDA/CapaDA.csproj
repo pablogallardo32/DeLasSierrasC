@@ -43,7 +43,10 @@
     <Compile Include="DetalleDA.cs" />
     <Compile Include="EmpleadoDA.cs" />
     <Compile Include="EnvaseDA.cs" />
+    <Compile Include="FacturaDA.cs" />
+    <Compile Include="ItemFacturaDA.cs" />
     <Compile Include="MarcaDA.cs" />
+    <Compile Include="ProductoDA.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorDA.cs" />
     <Compile Include="RubroDA.cs" />

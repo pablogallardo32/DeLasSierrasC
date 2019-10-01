@@ -99,5 +99,26 @@ namespace CapaDA
             con.Close();
             return Resultado;
         }
+
+
+       public List<SaborNE> TraerUltimoIDSabor()
+       {
+           IDbConnection con = DBComun.Conexion();
+           con.Open();
+           SqlCommand _Command = new SqlCommand("SELECT( max(IDSabor)+1) from Sabor", con as SqlConnection);
+           // _Command.CommandType = CommandType.StoredProcedure;
+           IDataReader reader = _Command.ExecuteReader();
+           List<SaborNE> Lista = new List<SaborNE>();
+           while (reader.Read())
+           {
+               SaborNE ObjetoSaborNE = new SaborNE();
+
+               ObjetoSaborNE.IDSabor = reader.GetInt32(0);
+
+               Lista.Add(ObjetoSaborNE);
+           }
+           con.Close();
+           return Lista;
+       }
     }
 }

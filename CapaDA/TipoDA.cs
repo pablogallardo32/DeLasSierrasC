@@ -99,5 +99,26 @@ namespace CapaDA
             con.Close();
             return Resultado;
         }
+
+
+        public List<TipoNE> TraerUltimoIDTipo()
+        {
+            IDbConnection con = DBComun.Conexion();
+            con.Open();
+            SqlCommand _Command = new SqlCommand("SELECT( max(IDTipo)+1) from Tipo", con as SqlConnection);
+            // _Command.CommandType = CommandType.StoredProcedure;
+            IDataReader reader = _Command.ExecuteReader();
+            List<TipoNE> Lista = new List<TipoNE>();
+            while (reader.Read())
+            {
+                TipoNE ObjetoTipoNE = new TipoNE();
+
+                ObjetoTipoNE.IDTipo = reader.GetInt32(0);
+
+                Lista.Add(ObjetoTipoNE);
+            }
+            con.Close();
+            return Lista;
+        }
     }
 }

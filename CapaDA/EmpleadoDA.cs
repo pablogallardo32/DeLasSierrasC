@@ -88,8 +88,8 @@ namespace CapaDA
                 ObjetoEmpleadoNE.Apellido = reader.GetString(1);
                 ObjetoEmpleadoNE.DNI = reader.GetInt32(2);
                 ObjetoEmpleadoNE.FechaNacimiento =reader.GetDateTime(3);
-                ObjetoEmpleadoNE.TelefonoCelular = reader.GetInt32(4);
-                ObjetoEmpleadoNE.TelefonoFijo = reader.GetInt32(5);
+                ObjetoEmpleadoNE.TelefonoCelular = reader.GetString(4);
+                ObjetoEmpleadoNE.TelefonoFijo = reader.GetString(5);
                 ObjetoEmpleadoNE.Mail = reader.GetString(6);
                 ObjetoEmpleadoNE.FechaIngreso = reader.GetDateTime(7);
                 ObjetoEmpleadoNE.Seccion = reader.GetString(8);

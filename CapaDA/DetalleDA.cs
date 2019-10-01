@@ -100,5 +100,25 @@ namespace CapaDA
             con.Close();
             return Resultado;
         }
+
+        public List<DetalleNE> TraerUltimoIDDetalle()
+        {
+            IDbConnection con = DBComun.Conexion();
+            con.Open();
+            SqlCommand _Command = new SqlCommand("SELECT( max(IDDetalle)+1) from Detalle", con as SqlConnection);
+            // _Command.CommandType = CommandType.StoredProcedure;
+            IDataReader reader = _Command.ExecuteReader();
+            List<DetalleNE> Lista = new List<DetalleNE>();
+            while (reader.Read())
+            {
+                DetalleNE ObjetoDetalleNE = new DetalleNE();
+
+                ObjetoDetalleNE.IDDetalle = reader.GetInt32(0);
+
+                Lista.Add(ObjetoDetalleNE);
+            }
+            con.Close();
+            return Lista;
+        }
     }
 }
