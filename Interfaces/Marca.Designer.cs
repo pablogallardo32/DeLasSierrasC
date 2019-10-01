@@ -32,12 +32,12 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.dataGridViewMarca = new System.Windows.Forms.DataGridView();
             this.textBoxNombreMarca = new System.Windows.Forms.TextBox();
-            this.textBoxIDMarca = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.comboBoxIDMarca = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMarca)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,7 @@
             this.dataGridViewMarca.Name = "dataGridViewMarca";
             this.dataGridViewMarca.Size = new System.Drawing.Size(284, 120);
             this.dataGridViewMarca.TabIndex = 29;
+            this.dataGridViewMarca.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMarca_CellClick);
             this.dataGridViewMarca.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMarca_CellContentClick);
             // 
             // textBoxNombreMarca
@@ -76,13 +77,6 @@
             this.textBoxNombreMarca.Name = "textBoxNombreMarca";
             this.textBoxNombreMarca.Size = new System.Drawing.Size(100, 20);
             this.textBoxNombreMarca.TabIndex = 23;
-            // 
-            // textBoxIDMarca
-            // 
-            this.textBoxIDMarca.Location = new System.Drawing.Point(77, 39);
-            this.textBoxIDMarca.Name = "textBoxIDMarca";
-            this.textBoxIDMarca.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIDMarca.TabIndex = 22;
             // 
             // Label2
             // 
@@ -132,16 +126,25 @@
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
+            // comboBoxIDMarca
+            // 
+            this.comboBoxIDMarca.Enabled = false;
+            this.comboBoxIDMarca.FormattingEnabled = true;
+            this.comboBoxIDMarca.Location = new System.Drawing.Point(77, 39);
+            this.comboBoxIDMarca.Name = "comboBoxIDMarca";
+            this.comboBoxIDMarca.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxIDMarca.TabIndex = 30;
+            // 
             // Marca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 281);
+            this.Controls.Add(this.comboBoxIDMarca);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.dataGridViewMarca);
             this.Controls.Add(this.textBoxNombreMarca);
-            this.Controls.Add(this.textBoxIDMarca);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.buttonSalir);
@@ -162,11 +165,11 @@
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.DataGridView dataGridViewMarca;
         internal System.Windows.Forms.TextBox textBoxNombreMarca;
-        internal System.Windows.Forms.TextBox textBoxIDMarca;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Button buttonSalir;
         internal System.Windows.Forms.Button buttonLimpiar;
         internal System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.ComboBox comboBoxIDMarca;
     }
 }

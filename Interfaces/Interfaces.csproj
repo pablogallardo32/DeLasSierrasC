@@ -65,6 +65,12 @@
     <Compile Include="Envase.Designer.cs">
       <DependentUpon>Envase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Factura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Factura.Designer.cs">
+      <DependentUpon>Factura.cs</DependentUpon>
+    </Compile>
     <Compile Include="Marca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,12 @@
     <Compile Include="Tipo.Designer.cs">
       <DependentUpon>Tipo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Venta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Venta.Designer.cs">
+      <DependentUpon>Venta.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Detalle.resx">
       <DependentUpon>Detalle.cs</DependentUpon>
     </EmbeddedResource>
@@ -117,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Envase.resx">
       <DependentUpon>Envase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Factura.resx">
+      <DependentUpon>Factura.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Marca.resx">
       <DependentUpon>Marca.cs</DependentUpon>

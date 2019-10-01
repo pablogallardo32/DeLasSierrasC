@@ -64,6 +64,7 @@
             this.buttonFacturas.TabIndex = 8;
             this.buttonFacturas.Text = "FACTURAS";
             this.buttonFacturas.UseVisualStyleBackColor = true;
+            this.buttonFacturas.Click += new System.EventHandler(this.buttonFacturas_Click);
             // 
             // buttonEmpleados
             // 

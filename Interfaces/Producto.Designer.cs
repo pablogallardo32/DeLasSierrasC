@@ -28,29 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Producto));
             this.gpbNuevoPro = new System.Windows.Forms.GroupBox();
             this.textBoxIdProducto = new System.Windows.Forms.TextBox();
+            this.Label5 = new System.Windows.Forms.Label();
+            this.Label7 = new System.Windows.Forms.Label();
             this.comboBoxRubro = new System.Windows.Forms.ComboBox();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
-            this.buttonListar = new System.Windows.Forms.Button();
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonLimpiarCampos = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonAgregarRubro = new System.Windows.Forms.Button();
+            this.dataGridViewProducto = new System.Windows.Forms.DataGridView();
             this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.comboBoxEnvasedesc = new System.Windows.Forms.ComboBox();
             this.comboBoxSabordesc = new System.Windows.Forms.ComboBox();
             this.comboBoxDetalledesc = new System.Windows.Forms.ComboBox();
             this.comboBoxMarcadesc = new System.Windows.Forms.ComboBox();
             this.comboBoxTipodesc = new System.Windows.Forms.ComboBox();
-            this.Label37 = new System.Windows.Forms.Label();
-            this.dataGridViewProducto = new System.Windows.Forms.DataGridView();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
             this.GroupBox4 = new System.Windows.Forms.GroupBox();
             this.labelDescripcionFinal = new System.Windows.Forms.Label();
@@ -64,6 +64,7 @@
             this.textBoxStockMinimo = new System.Windows.Forms.TextBox();
             this.Label17 = new System.Windows.Forms.Label();
             this.Label16 = new System.Windows.Forms.Label();
+            this.Label11 = new System.Windows.Forms.Label();
             this.buttonAgregarTipo = new System.Windows.Forms.Button();
             this.Label23 = new System.Windows.Forms.Label();
             this.Label24 = new System.Windows.Forms.Label();
@@ -86,15 +87,12 @@
             this.Label9 = new System.Windows.Forms.Label();
             this.buttonAgregarMarca = new System.Windows.Forms.Button();
             this.buttonAgregarEnvase = new System.Windows.Forms.Button();
-            this.Label5 = new System.Windows.Forms.Label();
-            this.Label7 = new System.Windows.Forms.Label();
             this.Label15 = new System.Windows.Forms.Label();
-            this.Label11 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
             this.gpbNuevoPro.SuspendLayout();
             this.GroupBox3.SuspendLayout();
-            this.GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducto)).BeginInit();
+            this.GroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).BeginInit();
             this.GroupBox4.SuspendLayout();
             this.GroupBox1.SuspendLayout();
@@ -103,14 +101,14 @@
             // gpbNuevoPro
             // 
             this.gpbNuevoPro.Controls.Add(this.textBoxIdProducto);
+            this.gpbNuevoPro.Controls.Add(this.Label5);
+            this.gpbNuevoPro.Controls.Add(this.Label7);
             this.gpbNuevoPro.Controls.Add(this.comboBoxRubro);
             this.gpbNuevoPro.Controls.Add(this.GroupBox3);
             this.gpbNuevoPro.Controls.Add(this.buttonAgregarRubro);
+            this.gpbNuevoPro.Controls.Add(this.dataGridViewProducto);
             this.gpbNuevoPro.Controls.Add(this.GroupBox2);
-            this.gpbNuevoPro.Controls.Add(this.Label5);
-            this.gpbNuevoPro.Controls.Add(this.Label7);
             this.gpbNuevoPro.Controls.Add(this.Label15);
-            this.gpbNuevoPro.Controls.Add(this.Label11);
             this.gpbNuevoPro.Controls.Add(this.Label6);
             this.gpbNuevoPro.Location = new System.Drawing.Point(12, 12);
             this.gpbNuevoPro.Name = "gpbNuevoPro";
@@ -121,23 +119,41 @@
             // 
             // textBoxIdProducto
             // 
-            this.textBoxIdProducto.Location = new System.Drawing.Point(87, 53);
+            this.textBoxIdProducto.Location = new System.Drawing.Point(87, 28);
             this.textBoxIdProducto.Name = "textBoxIdProducto";
             this.textBoxIdProducto.Size = new System.Drawing.Size(259, 20);
-            this.textBoxIdProducto.TabIndex = 150;
+            this.textBoxIdProducto.TabIndex = 1;
+            // 
+            // Label5
+            // 
+            this.Label5.AutoSize = true;
+            this.Label5.ForeColor = System.Drawing.Color.Red;
+            this.Label5.Location = new System.Drawing.Point(352, 32);
+            this.Label5.Name = "Label5";
+            this.Label5.Size = new System.Drawing.Size(17, 13);
+            this.Label5.TabIndex = 152;
+            this.Label5.Text = "(*)";
+            // 
+            // Label7
+            // 
+            this.Label7.AutoSize = true;
+            this.Label7.Location = new System.Drawing.Point(22, 32);
+            this.Label7.Name = "Label7";
+            this.Label7.Size = new System.Drawing.Size(46, 13);
+            this.Label7.TabIndex = 151;
+            this.Label7.Text = "Codigo :";
             // 
             // comboBoxRubro
             // 
             this.comboBoxRubro.FormattingEnabled = true;
-            this.comboBoxRubro.Location = new System.Drawing.Point(87, 18);
+            this.comboBoxRubro.Location = new System.Drawing.Point(88, 58);
             this.comboBoxRubro.Name = "comboBoxRubro";
             this.comboBoxRubro.Size = new System.Drawing.Size(259, 21);
-            this.comboBoxRubro.TabIndex = 149;
+            this.comboBoxRubro.TabIndex = 2;
             // 
             // GroupBox3
             // 
             this.GroupBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.GroupBox3.Controls.Add(this.buttonListar);
             this.GroupBox3.Controls.Add(this.buttonSalir);
             this.GroupBox3.Controls.Add(this.buttonGuardar);
             this.GroupBox3.Controls.Add(this.buttonModificar);
@@ -145,28 +161,20 @@
             this.GroupBox3.Controls.Add(this.buttonEliminar);
             this.GroupBox3.Location = new System.Drawing.Point(550, 14);
             this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(198, 195);
+            this.GroupBox3.Size = new System.Drawing.Size(198, 165);
             this.GroupBox3.TabIndex = 148;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "OPCIONES";
             // 
-            // buttonListar
-            // 
-            this.buttonListar.Location = new System.Drawing.Point(15, 132);
-            this.buttonListar.Name = "buttonListar";
-            this.buttonListar.Size = new System.Drawing.Size(178, 23);
-            this.buttonListar.TabIndex = 122;
-            this.buttonListar.Text = "Listar";
-            this.buttonListar.UseVisualStyleBackColor = true;
-            // 
             // buttonSalir
             // 
-            this.buttonSalir.Location = new System.Drawing.Point(15, 161);
+            this.buttonSalir.Location = new System.Drawing.Point(15, 132);
             this.buttonSalir.Name = "buttonSalir";
             this.buttonSalir.Size = new System.Drawing.Size(178, 23);
-            this.buttonSalir.TabIndex = 90;
+            this.buttonSalir.TabIndex = 93;
             this.buttonSalir.Text = "Salir";
             this.buttonSalir.UseVisualStyleBackColor = true;
+            this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
             // buttonGuardar
             // 
@@ -176,6 +184,7 @@
             this.buttonGuardar.TabIndex = 88;
             this.buttonGuardar.Text = "Guardar";
             this.buttonGuardar.UseVisualStyleBackColor = true;
+            this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
             // buttonModificar
             // 
@@ -192,28 +201,63 @@
             this.buttonLimpiarCampos.Location = new System.Drawing.Point(15, 103);
             this.buttonLimpiarCampos.Name = "buttonLimpiarCampos";
             this.buttonLimpiarCampos.Size = new System.Drawing.Size(178, 23);
-            this.buttonLimpiarCampos.TabIndex = 23;
+            this.buttonLimpiarCampos.TabIndex = 91;
             this.buttonLimpiarCampos.Text = "Limpiar campos";
             this.buttonLimpiarCampos.UseVisualStyleBackColor = true;
+            this.buttonLimpiarCampos.Click += new System.EventHandler(this.buttonLimpiarCampos_Click);
             // 
             // buttonEliminar
             // 
             this.buttonEliminar.Location = new System.Drawing.Point(15, 74);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(178, 23);
-            this.buttonEliminar.TabIndex = 124;
+            this.buttonEliminar.TabIndex = 90;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
             // buttonAgregarRubro
             // 
-            this.buttonAgregarRubro.Location = new System.Drawing.Point(375, 18);
+            this.buttonAgregarRubro.Location = new System.Drawing.Point(376, 58);
             this.buttonAgregarRubro.Name = "buttonAgregarRubro";
             this.buttonAgregarRubro.Size = new System.Drawing.Size(26, 23);
-            this.buttonAgregarRubro.TabIndex = 120;
+            this.buttonAgregarRubro.TabIndex = 201;
             this.buttonAgregarRubro.Text = "+";
             this.buttonAgregarRubro.UseVisualStyleBackColor = true;
             this.buttonAgregarRubro.Click += new System.EventHandler(this.buttonAgregarRubro_Click);
+            // 
+            // dataGridViewProducto
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridViewProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewProducto.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewProducto.Location = new System.Drawing.Point(25, 528);
+            this.dataGridViewProducto.Name = "dataGridViewProducto";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewProducto.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridViewProducto.Size = new System.Drawing.Size(705, 152);
+            this.dataGridViewProducto.TabIndex = 200;
+            this.dataGridViewProducto.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProducto_CellClick);
             // 
             // GroupBox2
             // 
@@ -222,11 +266,10 @@
             this.GroupBox2.Controls.Add(this.comboBoxDetalledesc);
             this.GroupBox2.Controls.Add(this.comboBoxMarcadesc);
             this.GroupBox2.Controls.Add(this.comboBoxTipodesc);
-            this.GroupBox2.Controls.Add(this.Label37);
-            this.GroupBox2.Controls.Add(this.dataGridViewProducto);
             this.GroupBox2.Controls.Add(this.PictureBox1);
             this.GroupBox2.Controls.Add(this.GroupBox4);
             this.GroupBox2.Controls.Add(this.GroupBox1);
+            this.GroupBox2.Controls.Add(this.Label11);
             this.GroupBox2.Controls.Add(this.buttonAgregarTipo);
             this.GroupBox2.Controls.Add(this.Label23);
             this.GroupBox2.Controls.Add(this.Label24);
@@ -251,7 +294,7 @@
             this.GroupBox2.Controls.Add(this.buttonAgregarEnvase);
             this.GroupBox2.Location = new System.Drawing.Point(25, 91);
             this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(731, 578);
+            this.GroupBox2.Size = new System.Drawing.Size(731, 431);
             this.GroupBox2.TabIndex = 122;
             this.GroupBox2.TabStop = false;
             this.GroupBox2.Text = "Agregar descripcion (*)";
@@ -262,7 +305,8 @@
             this.comboBoxEnvasedesc.Location = new System.Drawing.Point(63, 140);
             this.comboBoxEnvasedesc.Name = "comboBoxEnvasedesc";
             this.comboBoxEnvasedesc.Size = new System.Drawing.Size(259, 21);
-            this.comboBoxEnvasedesc.TabIndex = 177;
+            this.comboBoxEnvasedesc.TabIndex = 7;
+            this.comboBoxEnvasedesc.TextChanged += new System.EventHandler(this.comboBoxEnvasedesc_TextChanged);
             // 
             // comboBoxSabordesc
             // 
@@ -270,7 +314,8 @@
             this.comboBoxSabordesc.Location = new System.Drawing.Point(62, 113);
             this.comboBoxSabordesc.Name = "comboBoxSabordesc";
             this.comboBoxSabordesc.Size = new System.Drawing.Size(259, 21);
-            this.comboBoxSabordesc.TabIndex = 176;
+            this.comboBoxSabordesc.TabIndex = 6;
+            this.comboBoxSabordesc.TextChanged += new System.EventHandler(this.comboBoxSabordesc_TextChanged);
             // 
             // comboBoxDetalledesc
             // 
@@ -278,7 +323,8 @@
             this.comboBoxDetalledesc.Location = new System.Drawing.Point(62, 86);
             this.comboBoxDetalledesc.Name = "comboBoxDetalledesc";
             this.comboBoxDetalledesc.Size = new System.Drawing.Size(259, 21);
-            this.comboBoxDetalledesc.TabIndex = 175;
+            this.comboBoxDetalledesc.TabIndex = 5;
+            this.comboBoxDetalledesc.TextChanged += new System.EventHandler(this.comboBoxDetalledesc_TextChanged);
             // 
             // comboBoxMarcadesc
             // 
@@ -286,7 +332,8 @@
             this.comboBoxMarcadesc.Location = new System.Drawing.Point(63, 57);
             this.comboBoxMarcadesc.Name = "comboBoxMarcadesc";
             this.comboBoxMarcadesc.Size = new System.Drawing.Size(259, 21);
-            this.comboBoxMarcadesc.TabIndex = 174;
+            this.comboBoxMarcadesc.TabIndex = 4;
+            this.comboBoxMarcadesc.TextChanged += new System.EventHandler(this.comboBoxMarcadesc_TextChanged);
             // 
             // comboBoxTipodesc
             // 
@@ -294,49 +341,9 @@
             this.comboBoxTipodesc.Location = new System.Drawing.Point(62, 26);
             this.comboBoxTipodesc.Name = "comboBoxTipodesc";
             this.comboBoxTipodesc.Size = new System.Drawing.Size(259, 21);
-            this.comboBoxTipodesc.TabIndex = 173;
-            // 
-            // Label37
-            // 
-            this.Label37.AutoSize = true;
-            this.Label37.ForeColor = System.Drawing.Color.Red;
-            this.Label37.Location = new System.Drawing.Point(480, 401);
-            this.Label37.Name = "Label37";
-            this.Label37.Size = new System.Drawing.Size(134, 13);
-            this.Label37.TabIndex = 172;
-            this.Label37.Text = "(*) CAMPO OBLIGATORIO";
-            // 
-            // dataGridViewProducto
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProducto.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewProducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewProducto.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewProducto.Location = new System.Drawing.Point(13, 420);
-            this.dataGridViewProducto.Name = "dataGridViewProducto";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewProducto.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridViewProducto.Size = new System.Drawing.Size(705, 152);
-            this.dataGridViewProducto.TabIndex = 21;
+            this.comboBoxTipodesc.TabIndex = 3;
+            this.comboBoxTipodesc.TextChanged += new System.EventHandler(this.comboBoxTipodesc_TextChanged);
+            this.comboBoxTipodesc.Click += new System.EventHandler(this.comboBoxTipodesc_Click);
             // 
             // PictureBox1
             // 
@@ -362,9 +369,8 @@
             this.labelDescripcionFinal.AutoSize = true;
             this.labelDescripcionFinal.Location = new System.Drawing.Point(6, 20);
             this.labelDescripcionFinal.Name = "labelDescripcionFinal";
-            this.labelDescripcionFinal.Size = new System.Drawing.Size(47, 13);
+            this.labelDescripcionFinal.Size = new System.Drawing.Size(0, 13);
             this.labelDescripcionFinal.TabIndex = 165;
-            this.labelDescripcionFinal.Text = "Ninguna";
             // 
             // GroupBox1
             // 
@@ -408,7 +414,7 @@
             this.textBoxPrecioCosto.Location = new System.Drawing.Point(81, 23);
             this.textBoxPrecioCosto.Name = "textBoxPrecioCosto";
             this.textBoxPrecioCosto.Size = new System.Drawing.Size(41, 20);
-            this.textBoxPrecioCosto.TabIndex = 6;
+            this.textBoxPrecioCosto.TabIndex = 9;
             // 
             // Label2
             // 
@@ -424,7 +430,7 @@
             this.textBoxPrecioVenta.Location = new System.Drawing.Point(231, 26);
             this.textBoxPrecioVenta.Name = "textBoxPrecioVenta";
             this.textBoxPrecioVenta.Size = new System.Drawing.Size(41, 20);
-            this.textBoxPrecioVenta.TabIndex = 36;
+            this.textBoxPrecioVenta.TabIndex = 10;
             // 
             // Label3
             // 
@@ -440,7 +446,7 @@
             this.textBoxStockMinimo.Location = new System.Drawing.Point(371, 23);
             this.textBoxStockMinimo.Name = "textBoxStockMinimo";
             this.textBoxStockMinimo.Size = new System.Drawing.Size(41, 20);
-            this.textBoxStockMinimo.TabIndex = 38;
+            this.textBoxStockMinimo.TabIndex = 11;
             // 
             // Label17
             // 
@@ -462,12 +468,22 @@
             this.Label16.TabIndex = 115;
             this.Label16.Text = "(*)";
             // 
+            // Label11
+            // 
+            this.Label11.AutoSize = true;
+            this.Label11.ForeColor = System.Drawing.Color.Red;
+            this.Label11.Location = new System.Drawing.Point(571, 401);
+            this.Label11.Name = "Label11";
+            this.Label11.Size = new System.Drawing.Size(134, 13);
+            this.Label11.TabIndex = 112;
+            this.Label11.Text = "(*) CAMPO OBLIGATORIO";
+            // 
             // buttonAgregarTipo
             // 
             this.buttonAgregarTipo.Location = new System.Drawing.Point(350, 24);
             this.buttonAgregarTipo.Name = "buttonAgregarTipo";
             this.buttonAgregarTipo.Size = new System.Drawing.Size(26, 23);
-            this.buttonAgregarTipo.TabIndex = 162;
+            this.buttonAgregarTipo.TabIndex = 202;
             this.buttonAgregarTipo.Text = "+";
             this.buttonAgregarTipo.UseVisualStyleBackColor = true;
             this.buttonAgregarTipo.Click += new System.EventHandler(this.buttonAgregarTipo_Click);
@@ -515,7 +531,7 @@
             this.buttonAgregarSabor.Location = new System.Drawing.Point(350, 110);
             this.buttonAgregarSabor.Name = "buttonAgregarSabor";
             this.buttonAgregarSabor.Size = new System.Drawing.Size(26, 24);
-            this.buttonAgregarSabor.TabIndex = 153;
+            this.buttonAgregarSabor.TabIndex = 205;
             this.buttonAgregarSabor.Text = "+";
             this.buttonAgregarSabor.UseVisualStyleBackColor = true;
             this.buttonAgregarSabor.Click += new System.EventHandler(this.buttonAgregarSabor_Click);
@@ -539,13 +555,14 @@
             this.radioButtonKg.TabStop = true;
             this.radioButtonKg.Text = "Kilogramos (KG)";
             this.radioButtonKg.UseVisualStyleBackColor = true;
+            this.radioButtonKg.CheckedChanged += new System.EventHandler(this.radioButtonKg_CheckedChanged);
             // 
             // textBoxTamaño
             // 
             this.textBoxTamaño.Location = new System.Drawing.Point(67, 325);
             this.textBoxTamaño.Name = "textBoxTamaño";
             this.textBoxTamaño.Size = new System.Drawing.Size(59, 20);
-            this.textBoxTamaño.TabIndex = 149;
+            this.textBoxTamaño.TabIndex = 8;
             // 
             // radioButtonGramos
             // 
@@ -615,7 +632,7 @@
             this.buttonAgregarDetalle.Location = new System.Drawing.Point(350, 83);
             this.buttonAgregarDetalle.Name = "buttonAgregarDetalle";
             this.buttonAgregarDetalle.Size = new System.Drawing.Size(26, 24);
-            this.buttonAgregarDetalle.TabIndex = 132;
+            this.buttonAgregarDetalle.TabIndex = 204;
             this.buttonAgregarDetalle.Text = "+";
             this.buttonAgregarDetalle.UseVisualStyleBackColor = true;
             this.buttonAgregarDetalle.Click += new System.EventHandler(this.buttonAgregarDetalle_Click);
@@ -661,7 +678,7 @@
             this.buttonAgregarMarca.Location = new System.Drawing.Point(350, 54);
             this.buttonAgregarMarca.Name = "buttonAgregarMarca";
             this.buttonAgregarMarca.Size = new System.Drawing.Size(26, 24);
-            this.buttonAgregarMarca.TabIndex = 125;
+            this.buttonAgregarMarca.TabIndex = 203;
             this.buttonAgregarMarca.Text = "+";
             this.buttonAgregarMarca.UseVisualStyleBackColor = true;
             this.buttonAgregarMarca.Click += new System.EventHandler(this.buttonAgregarMarca_Click);
@@ -671,54 +688,25 @@
             this.buttonAgregarEnvase.Location = new System.Drawing.Point(350, 137);
             this.buttonAgregarEnvase.Name = "buttonAgregarEnvase";
             this.buttonAgregarEnvase.Size = new System.Drawing.Size(26, 24);
-            this.buttonAgregarEnvase.TabIndex = 126;
+            this.buttonAgregarEnvase.TabIndex = 206;
             this.buttonAgregarEnvase.Text = "+";
             this.buttonAgregarEnvase.UseVisualStyleBackColor = true;
             this.buttonAgregarEnvase.Click += new System.EventHandler(this.buttonAgregarEnvase_Click);
-            // 
-            // Label5
-            // 
-            this.Label5.AutoSize = true;
-            this.Label5.ForeColor = System.Drawing.Color.Red;
-            this.Label5.Location = new System.Drawing.Point(352, 57);
-            this.Label5.Name = "Label5";
-            this.Label5.Size = new System.Drawing.Size(17, 13);
-            this.Label5.TabIndex = 119;
-            this.Label5.Text = "(*)";
-            // 
-            // Label7
-            // 
-            this.Label7.AutoSize = true;
-            this.Label7.Location = new System.Drawing.Point(22, 57);
-            this.Label7.Name = "Label7";
-            this.Label7.Size = new System.Drawing.Size(46, 13);
-            this.Label7.TabIndex = 117;
-            this.Label7.Text = "Codigo :";
             // 
             // Label15
             // 
             this.Label15.AutoSize = true;
             this.Label15.ForeColor = System.Drawing.Color.Red;
-            this.Label15.Location = new System.Drawing.Point(352, 22);
+            this.Label15.Location = new System.Drawing.Point(353, 62);
             this.Label15.Name = "Label15";
             this.Label15.Size = new System.Drawing.Size(17, 13);
             this.Label15.TabIndex = 114;
             this.Label15.Text = "(*)";
             // 
-            // Label11
-            // 
-            this.Label11.AutoSize = true;
-            this.Label11.ForeColor = System.Drawing.Color.Red;
-            this.Label11.Location = new System.Drawing.Point(476, 525);
-            this.Label11.Name = "Label11";
-            this.Label11.Size = new System.Drawing.Size(134, 13);
-            this.Label11.TabIndex = 112;
-            this.Label11.Text = "(*) CAMPO OBLIGATORIO";
-            // 
             // Label6
             // 
             this.Label6.AutoSize = true;
-            this.Label6.Location = new System.Drawing.Point(29, 27);
+            this.Label6.Location = new System.Drawing.Point(30, 67);
             this.Label6.Name = "Label6";
             this.Label6.Size = new System.Drawing.Size(39, 13);
             this.Label6.TabIndex = 5;
@@ -732,12 +720,13 @@
             this.Controls.Add(this.gpbNuevoPro);
             this.Name = "Producto";
             this.Text = "Producto";
+            this.Load += new System.EventHandler(this.Producto_Load);
             this.gpbNuevoPro.ResumeLayout(false);
             this.gpbNuevoPro.PerformLayout();
             this.GroupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducto)).EndInit();
             this.GroupBox2.ResumeLayout(false);
             this.GroupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBox1)).EndInit();
             this.GroupBox4.ResumeLayout(false);
             this.GroupBox4.PerformLayout();
@@ -750,10 +739,8 @@
         #endregion
 
         internal System.Windows.Forms.GroupBox gpbNuevoPro;
-        internal System.Windows.Forms.TextBox textBoxIdProducto;
         internal System.Windows.Forms.ComboBox comboBoxRubro;
         internal System.Windows.Forms.GroupBox GroupBox3;
-        internal System.Windows.Forms.Button buttonListar;
         internal System.Windows.Forms.Button buttonSalir;
         internal System.Windows.Forms.Button buttonGuardar;
         internal System.Windows.Forms.Button buttonModificar;
@@ -766,7 +753,6 @@
         internal System.Windows.Forms.ComboBox comboBoxDetalledesc;
         internal System.Windows.Forms.ComboBox comboBoxMarcadesc;
         internal System.Windows.Forms.ComboBox comboBoxTipodesc;
-        internal System.Windows.Forms.Label Label37;
         internal System.Windows.Forms.DataGridView dataGridViewProducto;
         internal System.Windows.Forms.PictureBox PictureBox1;
         private System.Windows.Forms.GroupBox GroupBox4;
@@ -803,11 +789,12 @@
         internal System.Windows.Forms.Label Label9;
         internal System.Windows.Forms.Button buttonAgregarMarca;
         internal System.Windows.Forms.Button buttonAgregarEnvase;
-        internal System.Windows.Forms.Label Label5;
-        internal System.Windows.Forms.Label Label7;
         internal System.Windows.Forms.Label Label15;
         internal System.Windows.Forms.Label Label11;
         internal System.Windows.Forms.Label Label6;
+        internal System.Windows.Forms.TextBox textBoxIdProducto;
+        internal System.Windows.Forms.Label Label5;
+        internal System.Windows.Forms.Label Label7;
 
     }
 }

@@ -30,13 +30,23 @@ namespace Interfaces
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            textBoxIDEnvase.Text = string.Empty;
+          //  comboBoxIDEnvase.Text = string.Empty;
             textBoxNombreEnvase.Text = string.Empty;
+            buttonGuardar.Enabled = true;
+
+            comboBoxIDEnvase.DataSource = ObjetoEnvaseLN.TraerUltimoIDEnvase();
+            comboBoxIDEnvase.DisplayMember = "IDEnvase";
+         //   comboBoxIDEnvase.DataSource = ObjetoEnvaseLN.TraerUltimoIDEnvase();
+          //  comboBoxIDEnvase.DisplayMember = "IDEnvase";
         }
 
         private void Envase_Load(object sender, EventArgs e)
         {
-            textBoxIDEnvase.KeyPress += new KeyPressEventHandler(ValidarIDEnvase);
+
+            comboBoxIDEnvase.DataSource = ObjetoEnvaseLN.TraerUltimoIDEnvase();
+            comboBoxIDEnvase.DisplayMember = "IDEnvase";
+
+            comboBoxIDEnvase.KeyPress += new KeyPressEventHandler(ValidarIDEnvase);
 
             dataGridViewEnvase.DataSource = ObjetoEnvaseLN.MostrarEnvase();
         }
@@ -44,54 +54,57 @@ namespace Interfaces
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
 
-            ObjetoEnvaseNE.IDEnvase = Convert.ToInt32(textBoxIDEnvase.Text);
+            ObjetoEnvaseNE.IDEnvase = Convert.ToInt32(comboBoxIDEnvase.Text);
             ObjetoEnvaseNE.NombreEnvase = textBoxNombreEnvase.Text;
 
             DialogResult r = MessageBox.Show("¿Desea guardar el envase?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDEnvase.Text != "" && textBoxNombreEnvase.Text != "")
+                if (comboBoxIDEnvase.Text != "" && textBoxNombreEnvase.Text != "")
                 {
                     ObjetoEnvaseLN.AgregarEnvase(ObjetoEnvaseNE);
 
                     MessageBox.Show("Envase guardado con éxito");
                     dataGridViewEnvase.DataSource = ObjetoEnvaseLN.MostrarEnvase();
                     textBoxNombreEnvase.Text = string.Empty;
-                    textBoxIDEnvase.Text = string.Empty;
+                    comboBoxIDEnvase.Text = string.Empty;
+
+                    comboBoxIDEnvase.DataSource = ObjetoEnvaseLN.TraerUltimoIDEnvase();
+                    comboBoxIDEnvase.DisplayMember = "IDEnvase";
                 }
+                else
+                    MessageBox.Show("Ingrese el nombre del envase", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
             else if (r == DialogResult.No)
             {
                 // Close();
             }
 
-            else
-            {
-                MessageBox.Show("Ingrese el ID y el nombre del envase", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-
-            }
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-            ObjetoEnvaseNE.IDEnvase = Convert.ToInt32(textBoxIDEnvase.Text);
+            ObjetoEnvaseNE.IDEnvase = Convert.ToInt32(comboBoxIDEnvase.Text);
             ObjetoEnvaseNE.NombreEnvase = textBoxNombreEnvase.Text;
 
             DialogResult r = MessageBox.Show("¿Desea modificar el envase?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDEnvase.Text != "" && textBoxNombreEnvase.Text != "")
+                if (comboBoxIDEnvase.Text != "" && textBoxNombreEnvase.Text != "")
                 {
                     ObjetoEnvaseLN.ModificarEnvase(ObjetoEnvaseNE);
 
                     MessageBox.Show("Envase modificado con éxito");
                     dataGridViewEnvase.DataSource = ObjetoEnvaseLN.MostrarEnvase();
 
-                    textBoxIDEnvase.Text = string.Empty;
+                    comboBoxIDEnvase.Text = string.Empty;
                     textBoxNombreEnvase.Text = string.Empty;
+
+                    comboBoxIDEnvase.DataSource = ObjetoEnvaseLN.TraerUltimoIDEnvase();
+                    comboBoxIDEnvase.DisplayMember = "IDEnvase";
                 }
             }
             else
@@ -111,24 +124,38 @@ namespace Interfaces
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            ObjetoEnvaseNE.IDEnvase = Convert.ToInt32(textBoxIDEnvase.Text);
-            ObjetoEnvaseNE.NombreEnvase = textBoxNombreEnvase.Text;
+            DialogResult r = MessageBox.Show("¿Desea eliminar el envase?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (textBoxIDEnvase.Text != "")
+            if (r == DialogResult.Yes)
             {
-                ObjetoEnvaseLN.EliminarEnvase(ObjetoEnvaseNE);
-                dataGridViewEnvase.DataSource = ObjetoEnvaseLN.MostrarEnvase();
-                MessageBox.Show("Envase eliminado con éxito");
+                if ( textBoxNombreEnvase.Text != "")
+                {
+                  ObjetoEnvaseNE.IDEnvase = Convert.ToInt32(comboBoxIDEnvase.Text);
+                  ObjetoEnvaseNE.NombreEnvase = textBoxNombreEnvase.Text;
 
-                 textBoxIDEnvase.Text = string.Empty;
-                    textBoxNombreEnvase.Text = string.Empty;
+                  ObjetoEnvaseLN.EliminarEnvase(ObjetoEnvaseNE);
+                  dataGridViewEnvase.DataSource = ObjetoEnvaseLN.MostrarEnvase();
+                  MessageBox.Show("Envase eliminado con éxito");
 
+                  comboBoxIDEnvase.Text = string.Empty;
+                  textBoxNombreEnvase.Text = string.Empty;
+
+                  comboBoxIDEnvase.DataSource = ObjetoEnvaseLN.TraerUltimoIDEnvase();
+                  comboBoxIDEnvase.DisplayMember = "IDEnvase";
+                }
+                 else
+                
+                    MessageBox.Show("Seleccione envase", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                MessageBox.Show("Seleccione un envase");
+                if (r == DialogResult.No)
+                {
+                    //   Close();
+                }
+
+                }
             }
-        }
 
 
         private void ValidarIDEnvase(Object o, KeyPressEventArgs e)
@@ -145,6 +172,15 @@ namespace Interfaces
             {
                 e.Handled = true;
             }
+        }
+
+        private void dataGridViewEnvase_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            comboBoxIDEnvase.Text = dataGridViewEnvase.Rows[e.RowIndex].Cells["IDEnvase"].Value.ToString();
+            textBoxNombreEnvase.Text = dataGridViewEnvase.Rows[e.RowIndex].Cells["NombreEnvase"].Value.ToString();
+
+            buttonGuardar.Enabled = false;
+
         }
         }
     }

@@ -26,8 +26,10 @@ namespace Interfaces
        
         private void Tipo_Load(object sender, EventArgs e)
         {
+            comboBoxIDTipo.DataSource = ObjetoTipoLN.TraerUltimoIDTipo();
+            comboBoxIDTipo.DisplayMember = "IDTipo";
 
-            textBoxIDTipo.KeyPress += new KeyPressEventHandler(ValidarIDTipo);
+            comboBoxIDTipo.KeyPress += new KeyPressEventHandler(ValidarIDTipo);
 
             dataGridViewTipo.DataSource = ObjetoTipoLN.MostrarTipo();
 
@@ -52,43 +54,59 @@ namespace Interfaces
         private void buttonGuardar_Click_1(object sender, EventArgs e)
         {
 
-            ObjetoTipoNE.IDTipo = Convert.ToInt32(textBoxIDTipo.Text);
+            ObjetoTipoNE.IDTipo = Convert.ToInt32(comboBoxIDTipo.Text);
             ObjetoTipoNE.NombreTipo = textBoxNombreTipo.Text;
 
             DialogResult r = MessageBox.Show("¿Desea guardar el tipo?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDTipo.Text != "" && textBoxNombreTipo.Text != "")
+                if (comboBoxIDTipo.Text != "" && textBoxNombreTipo.Text != "")
                 {
                     ObjetoTipoLN.AgregarTipo(ObjetoTipoNE);
 
                     MessageBox.Show("Tipo guardado con éxito");
                     dataGridViewTipo.DataSource = ObjetoTipoLN.MostrarTipo();
                     textBoxNombreTipo.Text = string.Empty;
-                    textBoxIDTipo.Text = string.Empty;
-                }
-            }
-        }
+                    comboBoxIDTipo.Text = string.Empty;
 
+                    comboBoxIDTipo.DataSource = ObjetoTipoLN.TraerUltimoIDTipo();
+                    comboBoxIDTipo.DisplayMember = "IDTipo";
+                }
+                else
+
+                    MessageBox.Show("Ingrese el nombre del tipo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else if (r == DialogResult.No)
+            {
+                // Close();
+            }
+
+
+
+
+        }
         private void buttonModificar_Click_1(object sender, EventArgs e)
         {
-             ObjetoTipoNE.IDTipo = Convert.ToInt32(textBoxIDTipo.Text);
+            ObjetoTipoNE.IDTipo = Convert.ToInt32(comboBoxIDTipo.Text);
             ObjetoTipoNE.NombreTipo = textBoxNombreTipo.Text;
 
             DialogResult r = MessageBox.Show("¿Desea modificar el tipo?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDTipo.Text != "" && textBoxNombreTipo.Text != "")
+                if (comboBoxIDTipo.Text != "" && textBoxNombreTipo.Text != "")
                 {
                     ObjetoTipoLN.ModificarTipo(ObjetoTipoNE);
 
                     MessageBox.Show("Tipo modificado con éxito");
                     dataGridViewTipo.DataSource = ObjetoTipoLN.MostrarTipo();
 
-                    textBoxIDTipo.Text = string.Empty;
+                    comboBoxIDTipo.Text = string.Empty;
                     textBoxNombreTipo.Text = string.Empty;
+
+                    comboBoxIDTipo.DataSource = ObjetoTipoLN.TraerUltimoIDTipo();
+                    comboBoxIDTipo.DisplayMember = "IDTipo";
                 }
             }
             else
@@ -108,39 +126,71 @@ namespace Interfaces
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            ObjetoTipoNE.IDTipo = Convert.ToInt32(textBoxIDTipo.Text);
-            ObjetoTipoNE.NombreTipo = textBoxNombreTipo.Text;
 
-            if (textBoxIDTipo.Text != "")
+             DialogResult r = MessageBox.Show("¿Desea eliminar el tipo?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
             {
-                ObjetoTipoLN.EliminarTipo(ObjetoTipoNE);
+                 ObjetoTipoNE.IDTipo = Convert.ToInt32(comboBoxIDTipo.Text);
+                    ObjetoTipoNE.NombreTipo = textBoxNombreTipo.Text;
+
+                if ( textBoxNombreTipo.Text != "")
+                {
+
+                      ObjetoTipoLN.EliminarTipo(ObjetoTipoNE);
                 dataGridViewTipo.DataSource = ObjetoTipoLN.MostrarTipo();
                 MessageBox.Show("Tipo eliminado con éxito");
 
-                textBoxIDTipo.Text = string.Empty;
+                comboBoxIDTipo.Text = string.Empty;
                 textBoxNombreTipo.Text = string.Empty;
+
+                comboBoxIDTipo.DataSource = ObjetoTipoLN.TraerUltimoIDTipo();
+                comboBoxIDTipo.DisplayMember = "IDTipo";
+
+                }
+                 else
+                
+                    MessageBox.Show("Seleccione tipo", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                MessageBox.Show("Seleccione un tipo");
+                if (r == DialogResult.No)
+                {
+                    //   Close();
+                }
+
+                }
             }
-        }
+
 
         private void buttonLimpiar_Click_1(object sender, EventArgs e)
         {
-            textBoxIDTipo.Text = string.Empty;
             textBoxNombreTipo.Text = string.Empty;
+            buttonGuardar.Enabled = true;
+
+            comboBoxIDTipo.DataSource = ObjetoTipoLN.TraerUltimoIDTipo();
+            comboBoxIDTipo.DisplayMember = "IDTipo";
+
         }
 
         private void buttonSalir_Click_1(object sender, EventArgs e)
         {
             Close();
+            
         }
 
         private void dataGridViewTipo_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxIDTipo.Text = dataGridViewTipo.Rows[e.RowIndex].Cells["IDTipo"].Value.ToString();
+          
+        }
+
+        private void dataGridViewTipo_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            comboBoxIDTipo.Text = dataGridViewTipo.Rows[e.RowIndex].Cells["IDTipo"].Value.ToString();
             textBoxNombreTipo.Text = dataGridViewTipo.Rows[e.RowIndex].Cells["NombreTipo"].Value.ToString();
+
+            buttonGuardar.Enabled = false;
+
         }
 
         }

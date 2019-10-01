@@ -74,8 +74,6 @@
             this.ButtonGuardar = new System.Windows.Forms.Button();
             this.ButtonSalir = new System.Windows.Forms.Button();
             this.ButtonEliminar = new System.Windows.Forms.Button();
-            this.ButtonListar = new System.Windows.Forms.Button();
-            this.ButtonImprimir = new System.Windows.Forms.Button();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewEmpleado)).BeginInit();
             this.GroupBox1.SuspendLayout();
@@ -527,7 +525,7 @@
             // 
             // ButtonSalir
             // 
-            this.ButtonSalir.Location = new System.Drawing.Point(8, 194);
+            this.ButtonSalir.Location = new System.Drawing.Point(6, 139);
             this.ButtonSalir.Name = "ButtonSalir";
             this.ButtonSalir.Size = new System.Drawing.Size(181, 23);
             this.ButtonSalir.TabIndex = 120;
@@ -545,30 +543,9 @@
             this.ButtonEliminar.UseVisualStyleBackColor = true;
             this.ButtonEliminar.Click += new System.EventHandler(this.ButtonEliminar_Click);
             // 
-            // ButtonListar
-            // 
-            this.ButtonListar.Location = new System.Drawing.Point(8, 139);
-            this.ButtonListar.Name = "ButtonListar";
-            this.ButtonListar.Size = new System.Drawing.Size(180, 23);
-            this.ButtonListar.TabIndex = 122;
-            this.ButtonListar.Text = "Listar";
-            this.ButtonListar.UseVisualStyleBackColor = true;
-            this.ButtonListar.Click += new System.EventHandler(this.ButtonListar_Click);
-            // 
-            // ButtonImprimir
-            // 
-            this.ButtonImprimir.Location = new System.Drawing.Point(8, 167);
-            this.ButtonImprimir.Name = "ButtonImprimir";
-            this.ButtonImprimir.Size = new System.Drawing.Size(179, 23);
-            this.ButtonImprimir.TabIndex = 123;
-            this.ButtonImprimir.Text = "Imprimir";
-            this.ButtonImprimir.UseVisualStyleBackColor = true;
-            // 
             // GroupBox3
             // 
             this.GroupBox3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.GroupBox3.Controls.Add(this.ButtonImprimir);
-            this.GroupBox3.Controls.Add(this.ButtonListar);
             this.GroupBox3.Controls.Add(this.ButtonEliminar);
             this.GroupBox3.Controls.Add(this.ButtonSalir);
             this.GroupBox3.Controls.Add(this.ButtonGuardar);
@@ -576,7 +553,7 @@
             this.GroupBox3.Controls.Add(this.ButtonModificar);
             this.GroupBox3.Location = new System.Drawing.Point(547, 12);
             this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(194, 238);
+            this.GroupBox3.Size = new System.Drawing.Size(194, 170);
             this.GroupBox3.TabIndex = 155;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "OPCIONES";
@@ -651,8 +628,6 @@
         internal System.Windows.Forms.Button ButtonGuardar;
         internal System.Windows.Forms.Button ButtonSalir;
         internal System.Windows.Forms.Button ButtonEliminar;
-        internal System.Windows.Forms.Button ButtonListar;
-        internal System.Windows.Forms.Button ButtonImprimir;
         internal System.Windows.Forms.GroupBox GroupBox3;
     }
 }

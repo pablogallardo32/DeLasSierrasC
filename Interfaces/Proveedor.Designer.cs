@@ -35,19 +35,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.comboBoxRubro = new System.Windows.Forms.ComboBox();
             this.textBoxNombreEmpresa = new System.Windows.Forms.TextBox();
-            this.textBoxNumeroProveedor = new System.Windows.Forms.TextBox();
             this.textBoxTelefonoVendedor = new System.Windows.Forms.TextBox();
             this.textBoxTelefonoRepartidor = new System.Windows.Forms.TextBox();
             this.dataGridViewProveedor = new System.Windows.Forms.DataGridView();
             this.GroupBox3 = new System.Windows.Forms.GroupBox();
-            this.ButtonImprimir = new System.Windows.Forms.Button();
-            this.ButtonListar = new System.Windows.Forms.Button();
             this.ButtonEliminar = new System.Windows.Forms.Button();
             this.ButtonSalir = new System.Windows.Forms.Button();
             this.ButtonGuardar = new System.Windows.Forms.Button();
             this.ButtonLimpiar = new System.Windows.Forms.Button();
             this.ButtonModificar = new System.Windows.Forms.Button();
             this.buttonRubro = new System.Windows.Forms.Button();
+            this.comboBoxNumeroProveedor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProveedor)).BeginInit();
             this.GroupBox3.SuspendLayout();
             this.SuspendLayout();
@@ -112,13 +110,6 @@
             this.textBoxNombreEmpresa.Size = new System.Drawing.Size(121, 20);
             this.textBoxNombreEmpresa.TabIndex = 6;
             // 
-            // textBoxNumeroProveedor
-            // 
-            this.textBoxNumeroProveedor.Location = new System.Drawing.Point(154, 68);
-            this.textBoxNumeroProveedor.Name = "textBoxNumeroProveedor";
-            this.textBoxNumeroProveedor.Size = new System.Drawing.Size(121, 20);
-            this.textBoxNumeroProveedor.TabIndex = 7;
-            // 
             // textBoxTelefonoVendedor
             // 
             this.textBoxTelefonoVendedor.Location = new System.Drawing.Point(154, 135);
@@ -136,47 +127,26 @@
             // dataGridViewProveedor
             // 
             this.dataGridViewProveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewProveedor.Location = new System.Drawing.Point(24, 270);
+            this.dataGridViewProveedor.Location = new System.Drawing.Point(15, 211);
             this.dataGridViewProveedor.Name = "dataGridViewProveedor";
-            this.dataGridViewProveedor.Size = new System.Drawing.Size(459, 150);
+            this.dataGridViewProveedor.Size = new System.Drawing.Size(568, 150);
             this.dataGridViewProveedor.TabIndex = 10;
             this.dataGridViewProveedor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProveedor_CellClick);
             // 
             // GroupBox3
             // 
             this.GroupBox3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.GroupBox3.Controls.Add(this.ButtonImprimir);
-            this.GroupBox3.Controls.Add(this.ButtonListar);
             this.GroupBox3.Controls.Add(this.ButtonEliminar);
             this.GroupBox3.Controls.Add(this.ButtonSalir);
             this.GroupBox3.Controls.Add(this.ButtonGuardar);
             this.GroupBox3.Controls.Add(this.ButtonLimpiar);
             this.GroupBox3.Controls.Add(this.ButtonModificar);
-            this.GroupBox3.Location = new System.Drawing.Point(309, 12);
+            this.GroupBox3.Location = new System.Drawing.Point(375, 31);
             this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(194, 238);
+            this.GroupBox3.Size = new System.Drawing.Size(194, 174);
             this.GroupBox3.TabIndex = 156;
             this.GroupBox3.TabStop = false;
             this.GroupBox3.Text = "OPCIONES";
-            // 
-            // ButtonImprimir
-            // 
-            this.ButtonImprimir.Location = new System.Drawing.Point(8, 167);
-            this.ButtonImprimir.Name = "ButtonImprimir";
-            this.ButtonImprimir.Size = new System.Drawing.Size(179, 23);
-            this.ButtonImprimir.TabIndex = 123;
-            this.ButtonImprimir.Text = "Imprimir";
-            this.ButtonImprimir.UseVisualStyleBackColor = true;
-            // 
-            // ButtonListar
-            // 
-            this.ButtonListar.Location = new System.Drawing.Point(8, 139);
-            this.ButtonListar.Name = "ButtonListar";
-            this.ButtonListar.Size = new System.Drawing.Size(180, 23);
-            this.ButtonListar.TabIndex = 122;
-            this.ButtonListar.Text = "Listar";
-            this.ButtonListar.UseVisualStyleBackColor = true;
-            this.ButtonListar.Click += new System.EventHandler(this.ButtonListar_Click);
             // 
             // ButtonEliminar
             // 
@@ -190,7 +160,7 @@
             // 
             // ButtonSalir
             // 
-            this.ButtonSalir.Location = new System.Drawing.Point(8, 194);
+            this.ButtonSalir.Location = new System.Drawing.Point(6, 139);
             this.ButtonSalir.Name = "ButtonSalir";
             this.ButtonSalir.Size = new System.Drawing.Size(181, 23);
             this.ButtonSalir.TabIndex = 120;
@@ -238,17 +208,26 @@
             this.buttonRubro.UseVisualStyleBackColor = true;
             this.buttonRubro.Click += new System.EventHandler(this.buttonRubro_Click);
             // 
+            // comboBoxNumeroProveedor
+            // 
+            this.comboBoxNumeroProveedor.Enabled = false;
+            this.comboBoxNumeroProveedor.FormattingEnabled = true;
+            this.comboBoxNumeroProveedor.Location = new System.Drawing.Point(154, 68);
+            this.comboBoxNumeroProveedor.Name = "comboBoxNumeroProveedor";
+            this.comboBoxNumeroProveedor.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxNumeroProveedor.TabIndex = 158;
+            // 
             // Proveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(515, 432);
+            this.ClientSize = new System.Drawing.Size(595, 374);
+            this.Controls.Add(this.comboBoxNumeroProveedor);
             this.Controls.Add(this.buttonRubro);
             this.Controls.Add(this.GroupBox3);
             this.Controls.Add(this.dataGridViewProveedor);
             this.Controls.Add(this.textBoxTelefonoRepartidor);
             this.Controls.Add(this.textBoxTelefonoVendedor);
-            this.Controls.Add(this.textBoxNumeroProveedor);
             this.Controls.Add(this.textBoxNombreEmpresa);
             this.Controls.Add(this.comboBoxRubro);
             this.Controls.Add(this.label5);
@@ -275,18 +254,16 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBoxRubro;
         private System.Windows.Forms.TextBox textBoxNombreEmpresa;
-        private System.Windows.Forms.TextBox textBoxNumeroProveedor;
         private System.Windows.Forms.TextBox textBoxTelefonoVendedor;
         private System.Windows.Forms.TextBox textBoxTelefonoRepartidor;
         private System.Windows.Forms.DataGridView dataGridViewProveedor;
         internal System.Windows.Forms.GroupBox GroupBox3;
-        internal System.Windows.Forms.Button ButtonImprimir;
-        internal System.Windows.Forms.Button ButtonListar;
         internal System.Windows.Forms.Button ButtonEliminar;
         internal System.Windows.Forms.Button ButtonSalir;
         internal System.Windows.Forms.Button ButtonGuardar;
         internal System.Windows.Forms.Button ButtonLimpiar;
         internal System.Windows.Forms.Button ButtonModificar;
         private System.Windows.Forms.Button buttonRubro;
+        private System.Windows.Forms.ComboBox comboBoxNumeroProveedor;
     }
 }

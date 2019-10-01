@@ -56,5 +56,11 @@ namespace Interfaces
             Producto producto = new Producto();
             producto.ShowDialog();
         }
+
+        private void buttonFacturas_Click(object sender, EventArgs e)
+        {
+            Factura factura = new Factura();
+            factura.ShowDialog();
+        }
     }
 }

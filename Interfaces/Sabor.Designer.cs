@@ -32,12 +32,12 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.dataGridViewSabor = new System.Windows.Forms.DataGridView();
             this.textBoxNombreSabor = new System.Windows.Forms.TextBox();
-            this.textBoxIDSabor = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.comboBoxIDSabor = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSabor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,7 @@
             this.dataGridViewSabor.Name = "dataGridViewSabor";
             this.dataGridViewSabor.Size = new System.Drawing.Size(284, 120);
             this.dataGridViewSabor.TabIndex = 29;
+            this.dataGridViewSabor.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSabor_CellClick);
             this.dataGridViewSabor.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSabor_CellContentClick);
             // 
             // textBoxNombreSabor
@@ -76,13 +77,6 @@
             this.textBoxNombreSabor.Name = "textBoxNombreSabor";
             this.textBoxNombreSabor.Size = new System.Drawing.Size(100, 20);
             this.textBoxNombreSabor.TabIndex = 23;
-            // 
-            // textBoxIDSabor
-            // 
-            this.textBoxIDSabor.Location = new System.Drawing.Point(77, 39);
-            this.textBoxIDSabor.Name = "textBoxIDSabor";
-            this.textBoxIDSabor.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIDSabor.TabIndex = 22;
             // 
             // Label2
             // 
@@ -132,16 +126,25 @@
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
+            // comboBoxIDSabor
+            // 
+            this.comboBoxIDSabor.Enabled = false;
+            this.comboBoxIDSabor.FormattingEnabled = true;
+            this.comboBoxIDSabor.Location = new System.Drawing.Point(77, 39);
+            this.comboBoxIDSabor.Name = "comboBoxIDSabor";
+            this.comboBoxIDSabor.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxIDSabor.TabIndex = 30;
+            // 
             // Sabor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 281);
+            this.Controls.Add(this.comboBoxIDSabor);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.dataGridViewSabor);
             this.Controls.Add(this.textBoxNombreSabor);
-            this.Controls.Add(this.textBoxIDSabor);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.buttonSalir);
@@ -162,11 +165,11 @@
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.DataGridView dataGridViewSabor;
         internal System.Windows.Forms.TextBox textBoxNombreSabor;
-        internal System.Windows.Forms.TextBox textBoxIDSabor;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Button buttonSalir;
         internal System.Windows.Forms.Button buttonLimpiar;
         internal System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.ComboBox comboBoxIDSabor;
     }
 }

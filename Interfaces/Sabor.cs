@@ -24,54 +24,60 @@ namespace Interfaces
 
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
-            ObjetoSaborNE.IDSabor = Convert.ToInt32(textBoxIDSabor.Text);
+
+            ObjetoSaborNE.IDSabor = Convert.ToInt32(comboBoxIDSabor.Text);
             ObjetoSaborNE.NombreSabor = textBoxNombreSabor.Text;
 
             DialogResult r = MessageBox.Show("¿Desea guardar el sabor?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDSabor.Text != "" && textBoxNombreSabor.Text != "")
+                if (comboBoxIDSabor.Text != "" && textBoxNombreSabor.Text != "")
                 {
                     ObjetoSaborLN.AgregarSabor(ObjetoSaborNE);
 
                     MessageBox.Show("Sabor guardado con éxito");
                     dataGridViewSabor.DataSource = ObjetoSaborLN.MostrarSabor();
                     textBoxNombreSabor.Text = string.Empty;
-                    textBoxIDSabor.Text = string.Empty;
+                    comboBoxIDSabor.Text = string.Empty;
+
+                    comboBoxIDSabor.DataSource = ObjetoSaborLN.TraerUltimoIDSabor();
+                    comboBoxIDSabor.DisplayMember = "IDSabor";
                 }
+                else
+                    MessageBox.Show("Ingrese el nombre del sabor", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
             else if (r == DialogResult.No)
             {
                 // Close();
             }
 
-            else
-            {
-                MessageBox.Show("Ingrese el ID y el nombre del sabor", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-
-            }
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-        ObjetoSaborNE.IDSabor = Convert.ToInt32(textBoxIDSabor.Text);
+            ObjetoSaborNE.IDSabor = Convert.ToInt32(comboBoxIDSabor.Text);
             ObjetoSaborNE.NombreSabor = textBoxNombreSabor.Text;
 
             DialogResult r = MessageBox.Show("¿Desea modificar el sabor?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDSabor.Text != "" && textBoxNombreSabor.Text != "")
+                if (comboBoxIDSabor.Text != "" && textBoxNombreSabor.Text != "")
                 {
                     ObjetoSaborLN.ModificarSabor(ObjetoSaborNE);
 
                     MessageBox.Show("Sabor modificado con éxito");
 
-                    textBoxIDSabor.Text = string.Empty;
+                    comboBoxIDSabor.Text = string.Empty;
                     textBoxNombreSabor.Text = string.Empty;
                     dataGridViewSabor.DataSource = ObjetoSaborLN.MostrarSabor();
+
+                    comboBoxIDSabor.DataSource = ObjetoSaborLN.TraerUltimoIDSabor();
+                    comboBoxIDSabor.DisplayMember = "IDSabor";
+
+                
                 }
             }
             else
@@ -91,28 +97,48 @@ namespace Interfaces
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-             ObjetoSaborNE.IDSabor = Convert.ToInt32(textBoxIDSabor.Text);
+            DialogResult r = MessageBox.Show("¿Desea eliminar el sabor?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+                if ( textBoxNombreSabor.Text != "")
+                {
+
+                  ObjetoSaborNE.IDSabor = Convert.ToInt32(comboBoxIDSabor.Text);
             ObjetoSaborNE.NombreSabor = textBoxNombreSabor.Text;
 
-            if (textBoxIDSabor.Text != "")
-            {
-                ObjetoSaborLN.EliminarSabor(ObjetoSaborNE);
+                 ObjetoSaborLN.EliminarSabor(ObjetoSaborNE);
                 dataGridViewSabor.DataSource = ObjetoSaborLN.MostrarSabor();
                 MessageBox.Show("Sabor eliminado con éxito");
 
-                textBoxIDSabor.Text = string.Empty;
+                comboBoxIDSabor.Text = string.Empty;
                 textBoxNombreSabor.Text = string.Empty;
+
+                comboBoxIDSabor.DataSource = ObjetoSaborLN.TraerUltimoIDSabor();
+                comboBoxIDSabor.DisplayMember = "IDSabor";
+                }
+                 else
+                
+                    MessageBox.Show("Seleccione sabor", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                MessageBox.Show("Seleccione un sabor");
+                if (r == DialogResult.No)
+                {
+                    //   Close();
+                }
+
+                }
             }
-        }
+
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            textBoxIDSabor.Text = string.Empty;
             textBoxNombreSabor.Text = string.Empty;
+            buttonGuardar.Enabled = true;
+
+            comboBoxIDSabor.DataSource = ObjetoSaborLN.TraerUltimoIDSabor();
+            comboBoxIDSabor.DisplayMember = "IDSabor";
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -137,16 +163,26 @@ namespace Interfaces
 
         private void dataGridViewSabor_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxIDSabor.Text = dataGridViewSabor.Rows[e.RowIndex].Cells["IDSabor"].Value.ToString();
-            textBoxNombreSabor.Text = dataGridViewSabor.Rows[e.RowIndex].Cells["NombreSabor"].Value.ToString();
+            
         }
 
         private void Sabor_Load(object sender, EventArgs e)
         {
-            textBoxIDSabor.KeyPress += new KeyPressEventHandler(ValidarIDSabor);
+            comboBoxIDSabor.DataSource = ObjetoSaborLN.TraerUltimoIDSabor();
+            comboBoxIDSabor.DisplayMember = "IDSabor";
+
+            comboBoxIDSabor.KeyPress += new KeyPressEventHandler(ValidarIDSabor);
 
             dataGridViewSabor.DataSource = ObjetoSaborLN.MostrarSabor();
 
+        }
+
+        private void dataGridViewSabor_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            comboBoxIDSabor.Text = dataGridViewSabor.Rows[e.RowIndex].Cells["IDSabor"].Value.ToString();
+            textBoxNombreSabor.Text = dataGridViewSabor.Rows[e.RowIndex].Cells["NombreSabor"].Value.ToString();
+
+            buttonGuardar.Enabled = false;
         }
         }      
     }

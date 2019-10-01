@@ -26,9 +26,10 @@ namespace Interfaces
 
         private void Detalle_Load(object sender, EventArgs e)
         {
+            comboBoxIDDetalle.DataSource =  ObjetoDetalleLN.TraerUltimoIDDetalle();
+            comboBoxIDDetalle.DisplayMember = "IDDetalle";
 
-         
-           textBoxIDDetalle.KeyPress += new KeyPressEventHandler(ValidarIDDetalle);
+            comboBoxIDDetalle.KeyPress += new KeyPressEventHandler(ValidarIDDetalle);
 
             dataGridViewDetalle.DataSource = ObjetoDetalleLN.MostrarDetalle();
 
@@ -36,7 +37,7 @@ namespace Interfaces
 
         public void dataGridViewDetalle_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxIDDetalle.Text = dataGridViewDetalle.Rows[e.RowIndex].Cells["IDDetalle"].Value.ToString();
+            comboBoxIDDetalle.Text = dataGridViewDetalle.Rows[e.RowIndex].Cells["IDDetalle"].Value.ToString();
             textBoxNombreDetalle.Text = dataGridViewDetalle.Rows[e.RowIndex].Cells["NombreDetalle"].Value.ToString();
         }
 
@@ -63,44 +64,30 @@ namespace Interfaces
 
         private void buttonEliminar_Click_1(object sender, EventArgs e)
         {
-            ObjetoDetalleNE.IDDetalle = Convert.ToInt32(textBoxIDDetalle.Text);
-            ObjetoDetalleNE.NombreDetalle = textBoxNombreDetalle.Text;
 
-            if (textBoxIDDetalle.Text != "")
-            {
-                ObjetoDetalleLN.EliminarDetalle(ObjetoDetalleNE);
-                dataGridViewDetalle.DataSource = ObjetoDetalleLN.MostrarDetalle();
-                MessageBox.Show("Detalle eliminado con éxito");
-
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un detalle");
-            }
-        }
-
-        private void buttonLimpiar_Click_1(object sender, EventArgs e)
-        {
-            textBoxIDDetalle.Text = string.Empty;
-            textBoxNombreDetalle.Text = string.Empty;
-        }
-
-        private void buttonModificar_Click_1(object sender, EventArgs e)
-        {
-            ObjetoDetalleNE.IDDetalle = Convert.ToInt32(textBoxIDDetalle.Text);
-            ObjetoDetalleNE.NombreDetalle = textBoxNombreDetalle.Text;
-
-            DialogResult r = MessageBox.Show("¿Desea guardar el detalle?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+             DialogResult r = MessageBox.Show("¿Desea eliminar el detalle?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDDetalle.Text != "" && textBoxNombreDetalle.Text != "")
+                if (comboBoxIDDetalle.Text != "" && textBoxNombreDetalle.Text != "")
                 {
-                    ObjetoDetalleLN.ModificarDetalle(ObjetoDetalleNE);
 
-                    MessageBox.Show("Detalle modificado con éxito");
-                    dataGridViewDetalle.DataSource = ObjetoDetalleLN.MostrarDetalle();
+                    ObjetoDetalleNE.IDDetalle = Convert.ToInt32(comboBoxIDDetalle.Text);
+                    ObjetoDetalleNE.NombreDetalle = textBoxNombreDetalle.Text;
+
+                      ObjetoDetalleLN.EliminarDetalle(ObjetoDetalleNE);
+                      dataGridViewDetalle.DataSource = ObjetoDetalleLN.MostrarDetalle();
+                      MessageBox.Show("Detalle eliminado con éxito");
+
+                    comboBoxIDDetalle.Text = string.Empty;
+                    textBoxNombreDetalle.Text = string.Empty;
+
+                    comboBoxIDDetalle.DataSource = ObjetoDetalleLN.TraerUltimoIDDetalle();
+                    comboBoxIDDetalle.DisplayMember = "IDDetalle";
                 }
+                 else
+                
+                    MessageBox.Show("Seleccione detalle", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
@@ -109,45 +96,102 @@ namespace Interfaces
                     //   Close();
                 }
 
-                else
+                }
+            }
+
+
+        private void buttonLimpiar_Click_1(object sender, EventArgs e)
+        {
+            //comboBoxIDDetalle.Text = string.Empty;
+            textBoxNombreDetalle.Text = string.Empty;
+            buttonGuardar.Enabled = true;
+
+            comboBoxIDDetalle.DataSource = ObjetoDetalleLN.TraerUltimoIDDetalle();
+            comboBoxIDDetalle.DisplayMember = "IDDetalle";
+
+        }
+
+        private void buttonModificar_Click_1(object sender, EventArgs e)
+        {
+           
+
+            DialogResult r = MessageBox.Show("¿Desea modificar el detalle?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+                if (comboBoxIDDetalle.Text != "" && textBoxNombreDetalle.Text != "")
                 {
-                    MessageBox.Show("Ingrese el ID y el nombre del detalle", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    ObjetoDetalleNE.IDDetalle = Convert.ToInt32(comboBoxIDDetalle.Text);
+                    ObjetoDetalleNE.NombreDetalle = textBoxNombreDetalle.Text;
+
+                    ObjetoDetalleLN.ModificarDetalle(ObjetoDetalleNE);
+
+                    MessageBox.Show("Detalle modificado con éxito");
+                    dataGridViewDetalle.DataSource = ObjetoDetalleLN.MostrarDetalle();
+
+                    comboBoxIDDetalle.Text = string.Empty;
+                    textBoxNombreDetalle.Text = string.Empty;
+
+                    comboBoxIDDetalle.DataSource = ObjetoDetalleLN.TraerUltimoIDDetalle();
+                    comboBoxIDDetalle.DisplayMember = "IDDetalle";
+                }
+                 else
+                
+                    MessageBox.Show("Ingrese el nombre del detalle", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (r == DialogResult.No)
+                {
+                    //   Close();
+                }
 
                 }
             }
-        }
+        
 
         private void buttonGuardar_Click_1(object sender, EventArgs e)
         {
-            ObjetoDetalleNE.IDDetalle = Convert.ToInt32(textBoxIDDetalle.Text);
-            ObjetoDetalleNE.NombreDetalle = textBoxNombreDetalle.Text;
-
+        
             DialogResult r = MessageBox.Show("¿Desea guardar el detalle?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDDetalle.Text != "" && textBoxNombreDetalle.Text != "")
+                if (comboBoxIDDetalle.Text != "" && textBoxNombreDetalle.Text != "")
                 {
+                    ObjetoDetalleNE.IDDetalle = Convert.ToInt32(comboBoxIDDetalle.Text);
+                    ObjetoDetalleNE.NombreDetalle = textBoxNombreDetalle.Text;
+
                     ObjetoDetalleLN.AgregarDetalle(ObjetoDetalleNE);
 
                     MessageBox.Show("Detalle guardado con éxito");
                     dataGridViewDetalle.DataSource = ObjetoDetalleLN.MostrarDetalle();
                     textBoxNombreDetalle.Text = string.Empty;
-                    textBoxIDDetalle.Text = string.Empty;
+                    comboBoxIDDetalle.Text = string.Empty;
+
+                    comboBoxIDDetalle.DataSource = ObjetoDetalleLN.TraerUltimoIDDetalle();
+                    comboBoxIDDetalle.DisplayMember = "IDDetalle";
                 }
+                 else
+            
+                MessageBox.Show("Ingrese nombre del detalle", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (r == DialogResult.No)
             {
                 // Close();
             }
 
-            else
-            {
-                MessageBox.Show("Ingrese el ID y el nombre del detalle", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-
             }
+
+        private void dataGridViewDetalle_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            comboBoxIDDetalle.Text = dataGridViewDetalle.Rows[e.RowIndex].Cells["IDDetalle"].Value.ToString();
+            textBoxNombreDetalle.Text = dataGridViewDetalle.Rows[e.RowIndex].Cells["NombreDetalle"].Value.ToString();
+
+            buttonGuardar.Enabled = false;
+
         }
         }
-    }
+        }
+    
 

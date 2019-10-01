@@ -32,12 +32,12 @@
             this.buttonModificar = new System.Windows.Forms.Button();
             this.dataGridViewEnvase = new System.Windows.Forms.DataGridView();
             this.textBoxNombreEnvase = new System.Windows.Forms.TextBox();
-            this.textBoxIDEnvase = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonLimpiar = new System.Windows.Forms.Button();
             this.buttonGuardar = new System.Windows.Forms.Button();
+            this.comboBoxIDEnvase = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEnvase)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,7 @@
             this.dataGridViewEnvase.Name = "dataGridViewEnvase";
             this.dataGridViewEnvase.Size = new System.Drawing.Size(284, 120);
             this.dataGridViewEnvase.TabIndex = 29;
+            this.dataGridViewEnvase.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEnvase_CellClick);
             // 
             // textBoxNombreEnvase
             // 
@@ -75,13 +76,6 @@
             this.textBoxNombreEnvase.Name = "textBoxNombreEnvase";
             this.textBoxNombreEnvase.Size = new System.Drawing.Size(100, 20);
             this.textBoxNombreEnvase.TabIndex = 23;
-            // 
-            // textBoxIDEnvase
-            // 
-            this.textBoxIDEnvase.Location = new System.Drawing.Point(77, 39);
-            this.textBoxIDEnvase.Name = "textBoxIDEnvase";
-            this.textBoxIDEnvase.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIDEnvase.TabIndex = 22;
             // 
             // Label2
             // 
@@ -131,16 +125,25 @@
             this.buttonGuardar.UseVisualStyleBackColor = true;
             this.buttonGuardar.Click += new System.EventHandler(this.buttonGuardar_Click);
             // 
+            // comboBoxIDEnvase
+            // 
+            this.comboBoxIDEnvase.Enabled = false;
+            this.comboBoxIDEnvase.FormattingEnabled = true;
+            this.comboBoxIDEnvase.Location = new System.Drawing.Point(77, 42);
+            this.comboBoxIDEnvase.Name = "comboBoxIDEnvase";
+            this.comboBoxIDEnvase.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxIDEnvase.TabIndex = 30;
+            // 
             // Envase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 281);
+            this.Controls.Add(this.comboBoxIDEnvase);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.dataGridViewEnvase);
             this.Controls.Add(this.textBoxNombreEnvase);
-            this.Controls.Add(this.textBoxIDEnvase);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.buttonSalir);
@@ -161,11 +164,11 @@
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.DataGridView dataGridViewEnvase;
         internal System.Windows.Forms.TextBox textBoxNombreEnvase;
-        internal System.Windows.Forms.TextBox textBoxIDEnvase;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Button buttonSalir;
         internal System.Windows.Forms.Button buttonLimpiar;
         internal System.Windows.Forms.Button buttonGuardar;
+        private System.Windows.Forms.ComboBox comboBoxIDEnvase;
     }
 }

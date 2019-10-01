@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.textBoxNombreRubro = new System.Windows.Forms.TextBox();
-            this.textBoxIDRubro = new System.Windows.Forms.TextBox();
             this.Label2 = new System.Windows.Forms.Label();
             this.Label1 = new System.Windows.Forms.Label();
             this.buttonSalir = new System.Windows.Forms.Button();
@@ -38,6 +37,7 @@
             this.dataGridViewRubro = new System.Windows.Forms.DataGridView();
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
+            this.comboBoxIDRubro = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRubro)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,14 +48,6 @@
             this.textBoxNombreRubro.Size = new System.Drawing.Size(100, 20);
             this.textBoxNombreRubro.TabIndex = 13;
             this.textBoxNombreRubro.TextChanged += new System.EventHandler(this.textBoxNombreRubro_TextChanged);
-            // 
-            // textBoxIDRubro
-            // 
-            this.textBoxIDRubro.Location = new System.Drawing.Point(83, 33);
-            this.textBoxIDRubro.Name = "textBoxIDRubro";
-            this.textBoxIDRubro.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIDRubro.TabIndex = 12;
-            this.textBoxIDRubro.TextChanged += new System.EventHandler(this.textBoxIDRubro_KeyChar);
             // 
             // Label2
             // 
@@ -137,16 +129,25 @@
             this.buttonEliminar.UseVisualStyleBackColor = true;
             this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
+            // comboBoxIDRubro
+            // 
+            this.comboBoxIDRubro.Enabled = false;
+            this.comboBoxIDRubro.FormattingEnabled = true;
+            this.comboBoxIDRubro.Location = new System.Drawing.Point(84, 33);
+            this.comboBoxIDRubro.Name = "comboBoxIDRubro";
+            this.comboBoxIDRubro.Size = new System.Drawing.Size(99, 21);
+            this.comboBoxIDRubro.TabIndex = 20;
+            // 
             // Rubro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(404, 281);
+            this.Controls.Add(this.comboBoxIDRubro);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonModificar);
             this.Controls.Add(this.dataGridViewRubro);
             this.Controls.Add(this.textBoxNombreRubro);
-            this.Controls.Add(this.textBoxIDRubro);
             this.Controls.Add(this.Label2);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.buttonSalir);
@@ -169,7 +170,6 @@
         #endregion
 
         internal System.Windows.Forms.TextBox textBoxNombreRubro;
-        internal System.Windows.Forms.TextBox textBoxIDRubro;
         internal System.Windows.Forms.Label Label2;
         internal System.Windows.Forms.Label Label1;
         internal System.Windows.Forms.Button buttonSalir;
@@ -178,5 +178,6 @@
         private System.Windows.Forms.DataGridView dataGridViewRubro;
         private System.Windows.Forms.Button buttonModificar;
         private System.Windows.Forms.Button buttonEliminar;
+        private System.Windows.Forms.ComboBox comboBoxIDRubro;
     }
 }

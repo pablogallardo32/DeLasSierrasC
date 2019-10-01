@@ -33,28 +33,29 @@ namespace Interfaces
 
         private void ButtonLimpiar_Click(object sender, EventArgs e)
         {
-            textBoxIDRubro.Text = string.Empty;
             textBoxNombreRubro.Text = string.Empty;
+            buttonGuardar.Enabled = true;
+
         }
 
         private void ButtonGuardar_Click(object sender, EventArgs e)
         {
 
-            ObjetoRubroNE.IDRubro = Convert.ToInt32(textBoxIDRubro.Text);
+            ObjetoRubroNE.IDRubro = Convert.ToInt32(comboBoxIDRubro.Text);
             ObjetoRubroNE.NombreRubro = textBoxNombreRubro.Text;
 
             DialogResult r = MessageBox.Show("¿Desea guardar el rubro?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDRubro.Text != "" && textBoxNombreRubro.Text != "")
+                if (comboBoxIDRubro.Text != "" && textBoxNombreRubro.Text != "")
                 {
                     ObjetoRubroLN.AgregarRubro(ObjetoRubroNE);
 
                     MessageBox.Show("Rubro guardado con éxito");
                     dataGridViewRubro.DataSource = ObjetoRubroLN.MostrarRubro();
                     textBoxNombreRubro.Text = string.Empty;
-                    textBoxIDRubro.Text = string.Empty;
+                    comboBoxIDRubro.Text = string.Empty;
                 }
             }
             else if (r == DialogResult.No)
@@ -74,24 +75,26 @@ namespace Interfaces
         private void Rubro_Load(object sender, EventArgs e)
         {
 
-         
-           
-            textBoxIDRubro.KeyPress += new KeyPressEventHandler(ValidarIDRubro);
+
+            comboBoxIDRubro.KeyPress += new KeyPressEventHandler(ValidarIDRubro);
           
             dataGridViewRubro.DataSource = ObjetoRubroLN.MostrarRubro();
+
+            comboBoxIDRubro.DataSource = ObjetoRubroLN.TraerUltimoIDRubro();
+
 
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-            ObjetoRubroNE.IDRubro = Convert.ToInt32(textBoxIDRubro.Text);
+            ObjetoRubroNE.IDRubro = Convert.ToInt32(comboBoxIDRubro.Text);
             ObjetoRubroNE.NombreRubro = textBoxNombreRubro.Text;
 
             DialogResult r = MessageBox.Show("¿Desea modificar el rubro?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (r == DialogResult.Yes)
             {
-                if (textBoxIDRubro.Text != "" && textBoxNombreRubro.Text != "")
+                if (comboBoxIDRubro.Text != "" && textBoxNombreRubro.Text != "")
                 {
                     ObjetoRubroLN.ModificarRubro(ObjetoRubroNE);
 
@@ -108,7 +111,7 @@ namespace Interfaces
 
                 else
                 {
-                    MessageBox.Show("Ingrese el ID y el nombre del rubro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Ingrese nombre del rubro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 }
             }
@@ -116,19 +119,19 @@ namespace Interfaces
 
         public void dataGridViewRubro2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxIDRubro.Text = dataGridViewRubro.Rows[e.RowIndex].Cells["IDRubro"].Value.ToString();
+            comboBoxIDRubro.Text = dataGridViewRubro.Rows[e.RowIndex].Cells["IDRubro"].Value.ToString();
             textBoxNombreRubro.Text = dataGridViewRubro.Rows[e.RowIndex].Cells["NombreRubro"].Value.ToString();
 
-
+            buttonGuardar.Enabled = false;
 
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            ObjetoRubroNE.IDRubro = Convert.ToInt32(textBoxIDRubro.Text);
+            ObjetoRubroNE.IDRubro = Convert.ToInt32(comboBoxIDRubro.Text);
             ObjetoRubroNE.NombreRubro = textBoxNombreRubro.Text;
 
-            if (textBoxIDRubro.Text != "")
+            if (comboBoxIDRubro.Text != "")
             {
                 ObjetoRubroLN.EliminarRubro(ObjetoRubroNE);
                 dataGridViewRubro.DataSource = ObjetoRubroLN.MostrarRubro();

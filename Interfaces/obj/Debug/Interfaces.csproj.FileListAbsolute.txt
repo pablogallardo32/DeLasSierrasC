@@ -22,3 +22,4 @@ C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\Interf
 C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\Interfaces\obj\Debug\Interfaces.Marca.resources
 C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\Interfaces\obj\Debug\Interfaces.Sabor.resources
 C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\Interfaces\obj\Debug\Interfaces.Envase.resources
+C:\Users\Toshiba\Documents\Visual Studio 2012\Projects\DeLasSierrasCSharp\Interfaces\obj\Debug\Interfaces.Factura.resources

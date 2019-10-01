@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using CapaNE;
 using CapaLN;
+using System.ComponentModel;
+
 
 namespace Interfaces
 {
@@ -41,8 +43,8 @@ namespace Interfaces
             ObjetoEmpleadoNE.Apellido= textBoxApellido.Text;
             ObjetoEmpleadoNE.DNI =Convert.ToInt32(textBoxDNI.Text);
             ObjetoEmpleadoNE.FechaNacimiento = DateTimePeckerFechaNacimiento.Value;
-            ObjetoEmpleadoNE.TelefonoCelular = Convert.ToInt32(textBoxTelefonoCelular.Text);
-            ObjetoEmpleadoNE.TelefonoFijo = Convert.ToInt32(textBoxTelefonoFijo.Text);
+            ObjetoEmpleadoNE.TelefonoCelular = textBoxTelefonoCelular.Text;
+            ObjetoEmpleadoNE.TelefonoFijo = textBoxTelefonoFijo.Text;
             ObjetoEmpleadoNE.Mail = textBoxEMail.Text;
             ObjetoEmpleadoNE.FechaIngreso = DateTimePickerFechaIngreso.Value;
             ObjetoEmpleadoNE.Seccion = comboBoxSeccion.Text;
@@ -70,7 +72,10 @@ namespace Interfaces
 
         private void ButtonLimpiar_Click(object sender, EventArgs e)
         {
-            limpiarCampos(); 
+            limpiarCampos();
+
+            ButtonGuardar.Enabled = true;
+
         }
 
         public void limpiarCampos()
@@ -114,6 +119,8 @@ namespace Interfaces
             comboBoxProvincia.Text = DataGridViewEmpleado.Rows[e.RowIndex].Cells["Provincia"].Value.ToString();
             textBoxCodigoPostal.Text = DataGridViewEmpleado.Rows[e.RowIndex].Cells["CodigoPostal"].Value.ToString();
 
+            ButtonGuardar.Enabled = false;
+
             //DataGridViewEmpleados.DataSource = ObjetoEmpleadoLN.MostrarEmpleado();
 
 
@@ -125,8 +132,8 @@ namespace Interfaces
             ObjetoEmpleadoNE.Apellido = textBoxApellido.Text;
             ObjetoEmpleadoNE.DNI = Convert.ToInt32(textBoxDNI.Text);
             ObjetoEmpleadoNE.FechaNacimiento = DateTimePeckerFechaNacimiento.Value;
-            ObjetoEmpleadoNE.TelefonoCelular = Convert.ToInt32(textBoxTelefonoCelular.Text);
-            ObjetoEmpleadoNE.TelefonoFijo = Convert.ToInt32(textBoxTelefonoFijo.Text);
+            ObjetoEmpleadoNE.TelefonoCelular = textBoxTelefonoCelular.Text;
+            ObjetoEmpleadoNE.TelefonoFijo = textBoxTelefonoFijo.Text;
             ObjetoEmpleadoNE.Mail = textBoxEMail.Text;
             ObjetoEmpleadoNE.FechaIngreso = DateTimePickerFechaIngreso.Value;
             ObjetoEmpleadoNE.Seccion = comboBoxSeccion.Text;
@@ -165,13 +172,14 @@ namespace Interfaces
             textBoxCodigoPostal.KeyPress += new KeyPressEventHandler(ValidarCodigoPostal);
             textBoxNombre.KeyPress += new KeyPressEventHandler(ValidarNombre);
             textBoxApellido.KeyPress += new KeyPressEventHandler(ValidarApellido);
-           // textBoxEMail.KeyPress += new KeyPressEventHandler(ValidarEmail);
-
-            
+         //   textBoxEMail.KeyPress += ValidarEmail(textBoxEMail.Text);
+            ValidarEmail(textBoxEMail.Text);
 
             DataGridViewEmpleado.DataSource = ObjetoEmpleadoLN.MostrarEmpleado();
 
         }
+
+        
 
         private void ButtonEliminar_Click(object sender, EventArgs e)
         {
@@ -186,6 +194,10 @@ namespace Interfaces
         private void ValidarDNI(Object o, KeyPressEventArgs e)
         {
             if (Char.IsNumber(e.KeyChar))//Si es número
+            {
+                e.Handled = false;
+            }
+            if ((e.KeyChar)<1000000000)//Si es número
             {
                 e.Handled = false;
             }
