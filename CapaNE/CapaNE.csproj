@@ -42,7 +42,10 @@
     <Compile Include="DetalleNE.cs" />
     <Compile Include="EmpleadoNE.cs" />
     <Compile Include="EnvaseNE.cs" />
+    <Compile Include="FacturaNE.cs" />
+    <Compile Include="ItemFacturaNE.cs" />
     <Compile Include="MarcaNE.cs" />
+    <Compile Include="ProductoNE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedorNE.cs" />
     <Compile Include="RubroNE.cs" />
