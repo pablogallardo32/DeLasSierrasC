@@ -66,5 +66,24 @@ namespace CapaDA
             con.Close();
             return Resultado;
         }
+
+        public static int ModificarItemFactura(ItemFacturaNE iNE)
+        {
+            IDbConnection con = CapaDA.DBComun.Conexion();
+            con.Open();
+            
+            SqlCommand Comand = new SqlCommand(" UPDATE ItemFactura SET NombreProducto=@NombreProducto , Cantidad=@Cantidad , PrecioCosto=@PrecioCosto, Monto=@Monto WHERE IdProducto = @IdProducto", con as SqlConnection);
+            Comand.Parameters.Add(new SqlParameter("@NombreProducto", iNE.NombreProducto));
+            Comand.Parameters.Add(new SqlParameter("@IdProducto", iNE.IdProducto));
+            Comand.Parameters.Add(new SqlParameter("@Cantidad", iNE.Cantidad));
+            Comand.Parameters.Add(new SqlParameter("@PrecioCosto", iNE.PrecioCosto));
+            Comand.Parameters.Add(new SqlParameter("@Monto", iNE.Monto));
+
+            int Resultado = Comand.ExecuteNonQuery();
+            con.Close();
+            return Resultado;
+        }
+
+
     }
 }

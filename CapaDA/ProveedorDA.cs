@@ -83,7 +83,6 @@ namespace CapaDA
             IDbConnection con = DBComun.Conexion();
             con.Open();
             SqlCommand _Command = new SqlCommand("SELECT * From Proveedor", con as SqlConnection);
-            // _Command.CommandType = CommandType.StoredProcedure;
             IDataReader reader = _Command.ExecuteReader();
             List<ProveedorNE> Lista = new List<ProveedorNE>();
             while (reader.Read())
@@ -105,7 +104,6 @@ namespace CapaDA
             IDbConnection con = DBComun.Conexion();
             con.Open();
             SqlCommand _Command = new SqlCommand("SELECT( max(NumeroProveedor)+1) from Proveedor", con as SqlConnection);
-            // _Command.CommandType = CommandType.StoredProcedure;
             IDataReader reader = _Command.ExecuteReader();
             List<ProveedorNE> Lista = new List<ProveedorNE>();
             while (reader.Read())
@@ -119,22 +117,7 @@ namespace CapaDA
             con.Close();
             return Lista;
         }
-    //    public int TraerUltimoNumeroProveedor()
-    //    {
-    //        IDbConnection con = DBComun.Conexion();
-    //        con.Open();
-    //        SqlCommand Command = new SqlCommand("SELECT max(NumeroProveedor) from Proveedor ", con as SqlConnection);
-    ////        int a = Convert.ToDouble(Command);
-    //        DataTable dt = new DataTable();
-    //        SqlDataAdapter da = new SqlDataAdapter(Command);
-    //      //  Convert.ToInt64(Command);
-    //        da.Fill(dt);
-    //       // SqlCommand Resultado = Command; //  Command.ExecuteNonQuery();
-    //        con.Close();
-    //       // return Resultado;
-    //        return Convert.ToInt16(Command);
-
-    //    }
+   
 
         }
     }

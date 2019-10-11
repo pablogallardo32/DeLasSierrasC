@@ -121,7 +121,24 @@ namespace CapaDA
             return Resultado;
         }
 
+        public List<ProductoNE> TraerUltimoNumeroProducto()
+        {
+            IDbConnection con = DBComun.Conexion();
+            con.Open();
+            SqlCommand _Command = new SqlCommand("SELECT( max(IDProducto)+1) from Producto", con as SqlConnection);
+            IDataReader reader = _Command.ExecuteReader();
+            List<ProductoNE> Lista = new List<ProductoNE>();
+            while (reader.Read())
+            {
+                ProductoNE ObjetoProductoNE = new ProductoNE();
 
+                ObjetoProductoNE.IDProducto = Convert.ToInt32(reader.GetInt32(0));
+
+                Lista.Add(ObjetoProductoNE);
+            }
+            con.Close();
+            return Lista;
+        }
         
     }
 }

@@ -9,17 +9,13 @@ using System.Data;
 
 namespace CapaLN
 {
-    public class FacturaLN
+    public  class FacturaLN
     {
-      //  DBComun ObjetoProveedorDA = new DBComun();
         FacturaNE ObjetoFacturaNE= new FacturaNE();
         DBComun ObjetoFacturaDB = new DBComun();
         FacturaDA ObjetoFacturaDA = new FacturaDA();
 
-      //  public DataTable LlenarComboProveedor()
-      //  {
-       //     return ObjetoProveedorDA.LlenarComboProveedor();
-      //  }
+     
 
         public int AgregarFactura(FacturaNE fac)
         {
@@ -64,6 +60,16 @@ namespace CapaLN
         public int EliminarFactura(FacturaNE fac)
         {
             return FacturaDA.EliminarFactura(fac);
+        }
+
+        public int ModificarFactura(FacturaNE fac)
+        {
+            return FacturaDA.ModificarFactura(fac);
+        }
+
+        public List<FacturaNE> TraerUltimoNumeroFactura()
+        {
+            return ObjetoFacturaDA.TraerUltimoNumeroFactura();
         }
     }
 }

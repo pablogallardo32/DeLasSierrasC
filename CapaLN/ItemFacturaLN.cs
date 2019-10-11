@@ -15,14 +15,7 @@ using System.Data.ProviderBase;
 using System.Globalization;
 using System.Text.RegularExpressions;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CapaDA;
-using CapaNE;
-using System.Data;
+
 
 
 namespace CapaLN
@@ -48,5 +41,12 @@ namespace CapaLN
         {
             return ItemFacturaDA.EliminarItemFactura(NumeroFactura);
         }
+
+        public int ModificarItemFactura(ItemFacturaNE ifac)
+        {
+            return ItemFacturaDA.ModificarItemFactura(ifac);
+        }
+
+       
     }
 }

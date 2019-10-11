@@ -71,6 +71,9 @@ namespace CapaLN
            return ObjetoEnvaseDA.LlenarComboEnvase();
        }
 
-      
+       public List<ProductoNE> TraerUltimoNumeroProducto()
+       {
+           return ObjetoProductoDA.TraerUltimoNumeroProducto();
+       }
     }
 }

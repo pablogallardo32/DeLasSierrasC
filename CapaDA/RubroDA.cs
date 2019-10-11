@@ -105,7 +105,6 @@ namespace CapaDA
             IDbConnection con = DBComun.Conexion();
             con.Open();
             SqlCommand _Command = new SqlCommand("SELECT( max(IDRubro)+1) from Rubro", con as SqlConnection);
-            // _Command.CommandType = CommandType.StoredProcedure;
             IDataReader reader = _Command.ExecuteReader();
             List<RubroNE> Lista = new List<RubroNE>();
             while (reader.Read())
@@ -119,5 +118,7 @@ namespace CapaDA
             con.Close();
             return Lista;
         }
+
+
     }
 }

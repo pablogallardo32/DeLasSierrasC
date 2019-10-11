@@ -13,7 +13,7 @@ namespace CapaDA
 {
     public class FacturaDA
     {
-        public static int AgregarFactura(FacturaNE fNE)
+        public  static int AgregarFactura(FacturaNE fNE)
         {
             IDbConnection con = CapaDA.DBComun.Conexion();
             con.Open();
@@ -43,28 +43,6 @@ namespace CapaDA
         }
 
 
-
-        //public List<FacturaNE> MostrarFactura()
-        //{
-        //    IDbConnection con = DBComun.Conexion();
-        //    con.Open();
-        //    SqlCommand _Command = new SqlCommand("SELECT NumeroFactura, Fecha, CUITProveedor, NombreProveedor, TotalImporte from Factura", con as SqlConnection);
-        //    IDataReader reader = _Command.ExecuteReader();
-        //    List<FacturaNE> Lista = new List<FacturaNE>();
-        //    while (reader.Read())
-        //    {
-        //        FacturaNE ObjetoFacturaNE = new FacturaNE();
-        //        ObjetoFacturaNE.NumeroFactura = reader.GetInt32(0);
-        //        ObjetoFacturaNE.Fecha = reader.GetDateTime(1);
-        //        ObjetoFacturaNE.CUITProveedor = reader.GetInt32(2);
-        //        ObjetoFacturaNE.NombreProveedor = reader.GetString(3);
-        //        ObjetoFacturaNE.TotalImporte = reader.GetDouble(4);
-
-        //        Lista.Add(ObjetoFacturaNE);
-        //    }
-        //    con.Close();
-        //    return Lista;
-        //}
 
         public List<FacturaNE> MostrarFactura()
         {
@@ -123,6 +101,45 @@ namespace CapaDA
             SqlDataAdapter da = new SqlDataAdapter(Command);
             da.Fill(dt);
             return dt;
+        }
+
+        public List<FacturaNE> TraerUltimoNumeroFactura()
+        {
+            IDbConnection con = DBComun.Conexion();
+            con.Open();
+            SqlCommand _Command = new SqlCommand("SELECT( max(NumeroFactura)+1) from Factura", con as SqlConnection);
+            // _Command.CommandType = CommandType.StoredProcedure;
+            IDataReader reader = _Command.ExecuteReader();
+            List<FacturaNE> Lista = new List<FacturaNE>();
+            while (reader.Read())
+            {
+                FacturaNE ObjetoFacturaNE = new FacturaNE();
+
+                ObjetoFacturaNE.NumeroFactura = reader.GetInt32(0);
+
+                Lista.Add(ObjetoFacturaNE);
+            }
+            con.Close();
+            return Lista;
+        }
+
+
+        public static int ModificarFactura(FacturaNE eNE)
+        {
+            IDbConnection con = CapaDA.DBComun.Conexion();
+            con.Open();
+
+            SqlCommand Comand = new SqlCommand(" UPDATE Factura SET Fecha=@Fecha , CuitProveedor=@CuitProveedor , NombreProveedor=@NombreProveedor, TotalImporte=@TotalImporte WHERE NumeroFactura = @NumeroFactura", con as SqlConnection);
+            Comand.Parameters.Add(new SqlParameter("@NumeroFactura", eNE.NumeroFactura));
+            Comand.Parameters.Add(new SqlParameter("@Fecha", eNE.Fecha));
+            Comand.Parameters.Add(new SqlParameter("@CuitProveedor", eNE.NumeroProveedor));
+            Comand.Parameters.Add(new SqlParameter("@NombreProveedor", eNE.NombreProveedor));
+            Comand.Parameters.Add(new SqlParameter("@TotalImporte", eNE.TotalImporte));
+           
+
+            int Resultado = Comand.ExecuteNonQuery();
+            con.Close();
+            return Resultado;
         }
     }
 }

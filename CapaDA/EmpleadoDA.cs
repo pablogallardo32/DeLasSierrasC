@@ -94,13 +94,13 @@ namespace CapaDA
                 ObjetoEmpleadoNE.FechaIngreso = reader.GetDateTime(7);
                 ObjetoEmpleadoNE.Seccion = reader.GetString(8);
                 ObjetoEmpleadoNE.Calle = reader.GetString(9);
-                ObjetoEmpleadoNE.Numero = reader.GetInt32(10);
-                ObjetoEmpleadoNE.Piso = reader.GetInt32(11);
+                ObjetoEmpleadoNE.Numero = reader.GetString(10);
+                ObjetoEmpleadoNE.Piso = reader.GetString(11);
                 ObjetoEmpleadoNE.Depto = reader.GetString(12);
                 ObjetoEmpleadoNE.Barrio = reader.GetString(13);
                 ObjetoEmpleadoNE.Localidad = reader.GetString(14);
                 ObjetoEmpleadoNE.Provincia = reader.GetString(15);
-                ObjetoEmpleadoNE.CodigoPostal = reader.GetInt32(16);
+                ObjetoEmpleadoNE.CodigoPostal = reader.GetString(16);
 
                 Lista.Add(ObjetoEmpleadoNE);
             }
