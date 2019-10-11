@@ -62,5 +62,10 @@ namespace Interfaces
             Factura factura = new Factura();
             factura.ShowDialog();
         }
+
+        private void MenuPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using CapaNE;
 using CapaLN;
-using System.ComponentModel;
 
 
 namespace Interfaces
@@ -39,7 +38,13 @@ namespace Interfaces
 
         private void ButtonGuardar_Click(object sender, EventArgs e)
         {
-            ObjetoEmpleadoNE.Nombre = textBoxNombre.Text;
+            DialogResult r = MessageBox.Show("¿Desea guardar el empleado?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+                if (textBoxNombre.Text != "" && textBoxApellido.Text != "" && textBoxDNI.Text != "" &&  DateTimePeckerFechaNacimiento.Text !="" && DateTimePickerFechaIngreso.Text !="" )
+                {
+                     ObjetoEmpleadoNE.Nombre = textBoxNombre.Text;
             ObjetoEmpleadoNE.Apellido= textBoxApellido.Text;
             ObjetoEmpleadoNE.DNI =Convert.ToInt32(textBoxDNI.Text);
             ObjetoEmpleadoNE.FechaNacimiento = DateTimePeckerFechaNacimiento.Value;
@@ -49,18 +54,30 @@ namespace Interfaces
             ObjetoEmpleadoNE.FechaIngreso = DateTimePickerFechaIngreso.Value;
             ObjetoEmpleadoNE.Seccion = comboBoxSeccion.Text;
             ObjetoEmpleadoNE.Calle = textBoxCalle.Text;
-            ObjetoEmpleadoNE.Numero = Convert.ToInt16(textBoxNumero.Text);
-            ObjetoEmpleadoNE.Piso = Convert.ToInt16(textBoxPiso.Text);
+            ObjetoEmpleadoNE.Numero = textBoxNumero.Text;
+            ObjetoEmpleadoNE.Piso = textBoxPiso.Text;
             ObjetoEmpleadoNE.Depto = textBoxDepto.Text;
             ObjetoEmpleadoNE.Barrio = textBoxBarrio.Text;
             ObjetoEmpleadoNE.Localidad = comboBoxLocalidad.Text;
             ObjetoEmpleadoNE.Provincia = comboBoxProvincia.Text;
-            ObjetoEmpleadoNE.CodigoPostal = Convert.ToInt16(textBoxCodigoPostal.Text);
+            ObjetoEmpleadoNE.CodigoPostal = textBoxCodigoPostal.Text;
 
-            ObjetoEmpleadoLN.AgregarEmpleado(ObjetoEmpleadoNE);
+                    ObjetoEmpleadoLN.AgregarEmpleado(ObjetoEmpleadoNE);
             DataGridViewEmpleado.DataSource = ObjetoEmpleadoLN.MostrarEmpleado();
             MessageBox.Show("Empleado guardado con éxito");
             limpiarCampos();
+
+            ButtonModificar.Enabled = false;
+
+                }
+                else
+
+                    MessageBox.Show("Existen campos vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            else if (r == DialogResult.No)
+            {
+            }
 
         }
 
@@ -75,7 +92,8 @@ namespace Interfaces
             limpiarCampos();
 
             ButtonGuardar.Enabled = true;
-
+            ButtonModificar.Enabled = false;
+            
         }
 
         public void limpiarCampos()
@@ -120,15 +138,21 @@ namespace Interfaces
             textBoxCodigoPostal.Text = DataGridViewEmpleado.Rows[e.RowIndex].Cells["CodigoPostal"].Value.ToString();
 
             ButtonGuardar.Enabled = false;
-
-            //DataGridViewEmpleados.DataSource = ObjetoEmpleadoLN.MostrarEmpleado();
+            ButtonModificar.Enabled = true;
 
 
         }
 
         public void ButtonModificar_Click(object sender, EventArgs e)
         {
-            ObjetoEmpleadoNE.Nombre = textBoxNombre.Text;
+            
+            DialogResult r = MessageBox.Show("¿Desea modificar el empleado?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+                if (textBoxDNI.Text != "" )
+                {
+                ObjetoEmpleadoNE.Nombre = textBoxNombre.Text;
             ObjetoEmpleadoNE.Apellido = textBoxApellido.Text;
             ObjetoEmpleadoNE.DNI = Convert.ToInt32(textBoxDNI.Text);
             ObjetoEmpleadoNE.FechaNacimiento = DateTimePeckerFechaNacimiento.Value;
@@ -138,21 +162,38 @@ namespace Interfaces
             ObjetoEmpleadoNE.FechaIngreso = DateTimePickerFechaIngreso.Value;
             ObjetoEmpleadoNE.Seccion = comboBoxSeccion.Text;
             ObjetoEmpleadoNE.Calle = textBoxCalle.Text;
-            ObjetoEmpleadoNE.Numero = Convert.ToInt16(textBoxNumero.Text);
-            ObjetoEmpleadoNE.Piso = Convert.ToInt16(textBoxPiso.Text);
+            ObjetoEmpleadoNE.Numero = textBoxNumero.Text;
+            ObjetoEmpleadoNE.Piso = textBoxPiso.Text;
             ObjetoEmpleadoNE.Depto = textBoxDepto.Text;
             ObjetoEmpleadoNE.Barrio = textBoxBarrio.Text;
             ObjetoEmpleadoNE.Localidad = comboBoxLocalidad.Text;
             ObjetoEmpleadoNE.Provincia = comboBoxProvincia.Text;
-            ObjetoEmpleadoNE.CodigoPostal = Convert.ToInt16(textBoxCodigoPostal.Text);
+            ObjetoEmpleadoNE.CodigoPostal = textBoxCodigoPostal.Text;
+
+                    ObjetoEmpleadoLN.ModificarEmpleado(ObjetoEmpleadoNE);
+                MessageBox.Show("Empleado modificado con éxito");
+                DataGridViewEmpleado.DataSource = ObjetoEmpleadoLN.MostrarEmpleado();
+
+            limpiarCampos();
+
+            ButtonModificar.Enabled = false;
+            ButtonGuardar.Enabled = true;
+                }
+                else
+
+                    MessageBox.Show("Existen campos vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            else if (r == DialogResult.No)
+            {
+            }
+
 
 
             if (ValidarEmail(ObjetoEmpleadoNE.Mail) == true)
             {
 
-                ObjetoEmpleadoLN.ModificarEmpleado(ObjetoEmpleadoNE);
-                MessageBox.Show("Empleado modificado con éxito");
-                DataGridViewEmpleado.DataSource = ObjetoEmpleadoLN.MostrarEmpleado();
+                
             }
             else {
                 MessageBox.Show("Formato de E-mail no válido");
@@ -167,29 +208,54 @@ namespace Interfaces
             textBoxDNI.KeyPress += new KeyPressEventHandler(ValidarDNI);
             textBoxTelefonoCelular.KeyPress += new KeyPressEventHandler(ValidarTelefonoCelular);
             textBoxTelefonoFijo.KeyPress += new KeyPressEventHandler(ValidarTelefonoFijo);
-            textBoxNumero.KeyPress += new KeyPressEventHandler(ValidarNumero);
+            textBoxNumero.KeyPress += new KeyPressEventHandler(ValidarNumero);// puede ser s/n
             textBoxPiso.KeyPress += new KeyPressEventHandler(ValidarPiso);
             textBoxCodigoPostal.KeyPress += new KeyPressEventHandler(ValidarCodigoPostal);
             textBoxNombre.KeyPress += new KeyPressEventHandler(ValidarNombre);
             textBoxApellido.KeyPress += new KeyPressEventHandler(ValidarApellido);
-         //   textBoxEMail.KeyPress += ValidarEmail(textBoxEMail.Text);
+            string email = textBoxEMail.Text;
+          //  textBoxEMail.KeyPress += new KeyPressEventHandler(ValidarEmail(email));
             ValidarEmail(textBoxEMail.Text);
 
             DataGridViewEmpleado.DataSource = ObjetoEmpleadoLN.MostrarEmpleado();
 
+            ButtonModificar.Enabled = false;
         }
 
         
 
         private void ButtonEliminar_Click(object sender, EventArgs e)
         {
+            DialogResult r = MessageBox.Show("¿Desea eliminar el empleado?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            ObjetoEmpleadoNE.DNI = Convert.ToInt32(textBoxDNI.Text);
+            if (r == DialogResult.Yes)
+            {
+                if (textBoxDNI.Text != "" && textBoxNombre.Text != "" && textBoxApellido.Text != "" && DateTimePeckerFechaNacimiento.Text != "" && DateTimePickerFechaIngreso.Text != "")
+                {
+
+                      ObjetoEmpleadoNE.DNI = Convert.ToInt32(textBoxDNI.Text);
             ObjetoEmpleadoLN.EliminarEmpleado(ObjetoEmpleadoNE);
             DataGridViewEmpleado.DataSource = ObjetoEmpleadoLN.MostrarEmpleado();
             MessageBox.Show("Empleado eliminado con éxito");
             limpiarCampos();
-        }
+
+            ButtonModificar.Enabled = false;
+            ButtonGuardar.Enabled = true;
+
+           
+                }
+                 else
+                
+                    MessageBox.Show("Seleccione empleado", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (r == DialogResult.No)
+                {                }
+
+                }
+            }
+
 
         private void ValidarDNI(Object o, KeyPressEventArgs e)
         {
@@ -197,7 +263,7 @@ namespace Interfaces
             {
                 e.Handled = false;
             }
-            if ((e.KeyChar)<1000000000)//Si es número
+            if (Char.IsNumber(e.KeyChar) )//Si es número
             {
                 e.Handled = false;
             }

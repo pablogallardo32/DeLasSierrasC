@@ -356,7 +356,7 @@
             this.Label8.Name = "Label8";
             this.Label8.Size = new System.Drawing.Size(88, 13);
             this.Label8.TabIndex = 56;
-            this.Label8.Text = "Seccion o cargo:";
+            this.Label8.Text = "Sección o cargo:";
             // 
             // textBoxTelefonoFijo
             // 
@@ -433,7 +433,7 @@
             // 
             // textBoxDNI
             // 
-            this.textBoxDNI.BackColor = System.Drawing.SystemColors.Info;
+            this.textBoxDNI.BackColor = System.Drawing.SystemColors.Window;
             this.textBoxDNI.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.textBoxDNI.Location = new System.Drawing.Point(111, 94);
             this.textBoxDNI.Name = "textBoxDNI";

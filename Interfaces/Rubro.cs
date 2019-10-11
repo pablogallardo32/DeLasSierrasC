@@ -36,6 +36,8 @@ namespace Interfaces
             textBoxNombreRubro.Text = string.Empty;
             buttonGuardar.Enabled = true;
 
+            comboBoxIDRubro.DataSource = ObjetoRubroLN.TraerUltimoIDRubro();
+            comboBoxIDRubro.DisplayMember = "IDRubro";
         }
 
         private void ButtonGuardar_Click(object sender, EventArgs e)
@@ -56,19 +58,17 @@ namespace Interfaces
                     dataGridViewRubro.DataSource = ObjetoRubroLN.MostrarRubro();
                     textBoxNombreRubro.Text = string.Empty;
                     comboBoxIDRubro.Text = string.Empty;
+
+                    comboBoxIDRubro.DataSource = ObjetoRubroLN.TraerUltimoIDRubro();
+                    comboBoxIDRubro.DisplayMember = "IDRubro";
                 }
+                else
+                    MessageBox.Show("Ingrese el nombre del rubro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
             else if (r == DialogResult.No)
             {
-                // Close();
-            }
-
-            else
-            {
-                MessageBox.Show("Ingrese el ID y el nombre del rubro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-
-            }
+            } 
         }
         
 
@@ -81,8 +81,9 @@ namespace Interfaces
             dataGridViewRubro.DataSource = ObjetoRubroLN.MostrarRubro();
 
             comboBoxIDRubro.DataSource = ObjetoRubroLN.TraerUltimoIDRubro();
+            comboBoxIDRubro.DisplayMember = "IDRubro";
 
-
+            buttonModificar.Enabled = false;
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
@@ -100,13 +101,15 @@ namespace Interfaces
 
                     MessageBox.Show("Rubro modificado con éxito");
                     dataGridViewRubro.DataSource = ObjetoRubroLN.MostrarRubro();
+
+                    comboBoxIDRubro.DataSource = ObjetoRubroLN.TraerUltimoIDRubro();
+                    comboBoxIDRubro.DisplayMember = "IDRubro";
                 }
             }
             else
             {
                 if (r == DialogResult.No)
                 {
-                 //   Close();
                 }
 
                 else
@@ -123,26 +126,40 @@ namespace Interfaces
             textBoxNombreRubro.Text = dataGridViewRubro.Rows[e.RowIndex].Cells["NombreRubro"].Value.ToString();
 
             buttonGuardar.Enabled = false;
+            buttonModificar.Enabled = true;
 
         }
 
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            ObjetoRubroNE.IDRubro = Convert.ToInt32(comboBoxIDRubro.Text);
-            ObjetoRubroNE.NombreRubro = textBoxNombreRubro.Text;
+             DialogResult r = MessageBox.Show("¿Desea eliminar el rubro?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (comboBoxIDRubro.Text != "")
+            if (r == DialogResult.Yes)
+            {
+                ObjetoRubroNE.IDRubro = Convert.ToInt32(comboBoxIDRubro.Text);
+            ObjetoRubroNE.NombreRubro = textBoxNombreRubro.Text;
+                    if (comboBoxIDRubro.Text != "")
             {
                 ObjetoRubroLN.EliminarRubro(ObjetoRubroNE);
                 dataGridViewRubro.DataSource = ObjetoRubroLN.MostrarRubro();
                 MessageBox.Show("Rubro eliminado con éxito");
 
+                comboBoxIDRubro.DataSource = ObjetoRubroLN.TraerUltimoIDRubro();
+                comboBoxIDRubro.DisplayMember = "IDRubro";
+            }
+                 else
+                
+                    MessageBox.Show("Seleccione rubro", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-                MessageBox.Show("Seleccione un rubro");
+                if (r == DialogResult.No)
+                {
+                   
+                }
+
+                }
             }
-        }
 
 
         private void ValidarIDRubro(Object o, KeyPressEventArgs e)

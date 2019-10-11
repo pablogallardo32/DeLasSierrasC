@@ -67,7 +67,6 @@ namespace Interfaces
             }
             else if (r == DialogResult.No)
             {
-                // Close();
             }
 
         }
@@ -98,7 +97,6 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
             }
         }
@@ -133,7 +131,6 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
 
                 }
@@ -148,6 +145,8 @@ namespace Interfaces
             comboBoxIDMarca.KeyPress += new KeyPressEventHandler(ValidarIDMarca);
 
             dataGridViewMarca.DataSource = ObjetoMarcaLN.MostrarMarca();
+
+            buttonModificar.Enabled = false;
         }
 
         private void dataGridViewMarca_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -178,6 +177,7 @@ namespace Interfaces
             textBoxNombreMarca.Text = dataGridViewMarca.Rows[e.RowIndex].Cells["NombreMarca"].Value.ToString();
 
             buttonGuardar.Enabled = false;
+            buttonModificar.Enabled = true;
 
         }
 

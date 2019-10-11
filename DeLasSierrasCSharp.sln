@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CapaLN", "CapaLN\CapaLN.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interfaces", "Interfaces\Interfaces.csproj", "{8E74751D-D1C9-47F5-BE32-D8FEAC2F6FCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebasUnitarias", "PruebasUnitarias\PruebasUnitarias.csproj", "{18754B25-DE04-47ED-820C-44F912AC79F8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{8E74751D-D1C9-47F5-BE32-D8FEAC2F6FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E74751D-D1C9-47F5-BE32-D8FEAC2F6FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E74751D-D1C9-47F5-BE32-D8FEAC2F6FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18754B25-DE04-47ED-820C-44F912AC79F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18754B25-DE04-47ED-820C-44F912AC79F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18754B25-DE04-47ED-820C-44F912AC79F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18754B25-DE04-47ED-820C-44F912AC79F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

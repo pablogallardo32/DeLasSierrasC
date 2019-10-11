@@ -33,12 +33,16 @@ namespace Interfaces
 
             dataGridViewDetalle.DataSource = ObjetoDetalleLN.MostrarDetalle();
 
+            buttonModificar.Enabled = false;
         }
 
         public void dataGridViewDetalle_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             comboBoxIDDetalle.Text = dataGridViewDetalle.Rows[e.RowIndex].Cells["IDDetalle"].Value.ToString();
             textBoxNombreDetalle.Text = dataGridViewDetalle.Rows[e.RowIndex].Cells["NombreDetalle"].Value.ToString();
+
+            buttonModificar.Enabled = true;
+
         }
 
         private void ValidarIDDetalle(Object o, KeyPressEventArgs e)
@@ -93,7 +97,6 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
 
                 }
@@ -102,7 +105,6 @@ namespace Interfaces
 
         private void buttonLimpiar_Click_1(object sender, EventArgs e)
         {
-            //comboBoxIDDetalle.Text = string.Empty;
             textBoxNombreDetalle.Text = string.Empty;
             buttonGuardar.Enabled = true;
 
@@ -143,7 +145,6 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
 
                 }
@@ -178,7 +179,6 @@ namespace Interfaces
             }
             else if (r == DialogResult.No)
             {
-                // Close();
             }
 
             }
@@ -189,6 +189,7 @@ namespace Interfaces
             textBoxNombreDetalle.Text = dataGridViewDetalle.Rows[e.RowIndex].Cells["NombreDetalle"].Value.ToString();
 
             buttonGuardar.Enabled = false;
+            buttonModificar.Enabled = true;
 
         }
         }

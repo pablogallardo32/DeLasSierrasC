@@ -33,6 +33,7 @@ namespace Interfaces
 
             dataGridViewTipo.DataSource = ObjetoTipoLN.MostrarTipo();
 
+            buttonModificar.Enabled = false;
         }
 
         private void ValidarIDTipo(Object o, KeyPressEventArgs e)
@@ -79,11 +80,8 @@ namespace Interfaces
             }
             else if (r == DialogResult.No)
             {
-                // Close();
+          
             }
-
-
-
 
         }
         private void buttonModificar_Click_1(object sender, EventArgs e)
@@ -113,7 +111,6 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
 
                 else
@@ -156,7 +153,6 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
 
                 }
@@ -190,6 +186,7 @@ namespace Interfaces
             textBoxNombreTipo.Text = dataGridViewTipo.Rows[e.RowIndex].Cells["NombreTipo"].Value.ToString();
 
             buttonGuardar.Enabled = false;
+            buttonModificar.Enabled = true;
 
         }
 

@@ -40,14 +40,14 @@ namespace Interfaces
 
         private void Factura_Load(object sender, EventArgs e)
         {
+
+            comboBoxNumeroFactura.DataSource = ObjetoFacturaLN.TraerUltimoNumeroFactura();
+            comboBoxNumeroFactura.DisplayMember = "NumeroFactura";
+
             DataGridViewFactura.DataSource = ObjetoFacturaLN.MostrarFactura();
-
-
-        //    DataSet ds = new DataSet();
 
              LlenarComboIDProducto();
 
-       //     LlenarComboNombreProducto(ObjetoItemFacturaNE.IdProducto);
 
             LlenarComboPrecioProducto(ObjetoItemFacturaNE.IdProducto);
 
@@ -55,29 +55,11 @@ namespace Interfaces
 
            textBoxCantidad.KeyPress += new KeyPressEventHandler(ValidarCantidad);
 
-            //DataTable ds = new DataTable();
-            //ds= ObjetoProveedorLN.LlenarComboIDProducto();
-            //comboBoxCodigoProducto.DataSource= ds;
-   
-      
-           // comboBoxProducto.DataSource = ObjetoProveedorLN.LlenarComboIDProducto();
-
-          //  comboBoxCodigoProducto.DataSource = ObjetoProveedorLN.LlenarComboIDProducto();
-           // comboBoxCodigoProducto.ValueMember = "IDProducto";
-            //comboBoxCodigoProducto.DisplayMember = "IDProducto";
-
-
-       //     comboBoxCodigoProducto.DataSource = ObjetoProveedorLN.LlenarComboIDProducto();
-       //     comboBoxCodigoProducto.ValueMember = "IDProducto";
-        //   comboBoxCodigoProducto.DisplayMember = "IDProducto";
-          //  comboBoxProducto.DisplayMember = "DetalleProducto";
-
-
-
-
-
-            //comboBoxNombreProveedor.DataSource = ObjetoProveedorLN.LlenarComboProveedor();
-           // comboBoxNombreProveedor.DisplayMember = "NombreEmpresa";
+           ButtonEliminarFactura.Enabled = false;
+           ButtonModificarFactura.Enabled = false;
+           ButtonGuardarFactura.Enabled = false;
+           textBoxNumeroFactura2.Text = comboBoxNumeroFactura.Text;
+       
         }
 
         private void LlenarComboNumeroProveedor()
@@ -91,60 +73,43 @@ namespace Interfaces
         public void LimpiarCampos()
         {
             DataTimePickerFecha.Value = DateTime.Now;
-            textBoxNumeroFactura.Text = string.Empty;
-            comboBoxNombreProveedor.Text = string.Empty;
-            comboBoxCodigoProducto.Text = string.Empty;
-            comboBoxNumeroProveedor.Text = string.Empty;
-            comboBoxProducto.Text = string.Empty;
+            comboBoxNumeroFactura.Text = string.Empty;
             textBoxCantidad.Text ="0";
             comboBoxPrecioCosto.Text = string.Empty;
             textBoxTotalProducto.Text = string.Empty;
             textBoxNumeroFactura2.Text = string.Empty;
             textBoxTotal.Text = string.Empty;
 
+            comboBoxNumeroFactura.DataSource = ObjetoFacturaLN.TraerUltimoNumeroFactura();
+            comboBoxNumeroFactura.DisplayMember = "NumeroFactura";
 
+            textBoxNumeroFactura2.Text = comboBoxNumeroFactura.Text;
         }
 
        
 
         private void comboBoxProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-          //  LlenarComboIDProducto();     
             LlenarComboNombreProducto(Convert.ToInt32(comboBoxCodigoProducto.Text));
-
-
 
         }
 
         private void comboBoxCodigoProducto_SelectionChangeCommitted(object sender, EventArgs e)
         {
-           // LlenarComboNombreProducto(Convert.ToInt32(comboBoxCodigoProducto.Text));
         }
 
         private void comboBoxProducto_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            //comboBoxCodigoProducto.DataSource = ObjetoProveedorLN.LlenarComboIDProducto();
-            //comboBoxCodigoProducto.ValueMember = "IDProducto";
-            //comboBoxCodigoProducto.DisplayMember = "IDProducto";
+        
         }
 
         private void comboBoxCodigoProducto_SelectedIndexChanged(object sender, EventArgs e)
         {
-           // LlenarComboNombreProducto(Convert.ToInt32(comboBoxCodigoProducto.Text));
-
-         //   LlenarComboNombreProducto(Convert.ToInt16(comboBoxCodigoProducto.Text));
-          // comboBoxProducto.DataSource = ObjetoProveedorLN.LlenarComboIDProducto();
-          //       comboBoxProducto.ValueMember = "IDProducto";
-          //  comboBoxProducto.DisplayMember = "IDProducto";
-         //     comboBoxProducto.DisplayMember = "DetalleProducto";
         }
-
 
         public void LlenarComboNombreProducto(int IDProducto)
         {
-            
-              //  int a = Convert.ToInt16(comboBoxCodigoProducto.Text);
-            comboBoxProducto.DataSource = ObjetoFacturaLN.LlenarComboNombreProducto(Convert.ToInt32(comboBoxCodigoProducto.Text));
+                comboBoxProducto.DataSource = ObjetoFacturaLN.LlenarComboNombreProducto(Convert.ToInt32(comboBoxCodigoProducto.Text));
                 comboBoxProducto.ValueMember = "IDProducto";
                 comboBoxProducto.DisplayMember = "DetalleProducto";
             
@@ -154,9 +119,7 @@ namespace Interfaces
        
             comboBoxCodigoProducto.DataSource = ObjetoFacturaLN.LlenarComboIDProducto();
             comboBoxCodigoProducto.ValueMember = "IDProducto";
-            comboBoxCodigoProducto.DisplayMember = "IDProducto";
-           // textBoxPrecioCosto.Text = ObjetoProductoNE.PrecioCosto.ToString();
-            
+            comboBoxCodigoProducto.DisplayMember = "IDProducto";            
         }
 
         public void LlenarComboPrecioProducto(int IDProducto)
@@ -180,7 +143,7 @@ namespace Interfaces
 
         private void textBoxNumeroFactura_TextChanged_1(object sender, EventArgs e)
         {
-            textBoxNumeroFactura2.Text = textBoxNumeroFactura.Text;
+            textBoxNumeroFactura2.Text = comboBoxNumeroFactura.Text;
         }
         private void ValidarCantidad(Object o, KeyPressEventArgs e)
         {
@@ -211,22 +174,23 @@ namespace Interfaces
           return suma;
         }
 
+        public double SumarImportes2()
+        {
+            double suma = 0;
+
+            foreach (DataGridViewRow fila in dataGridViewVerItems.Rows)
+            {
+                if (fila.Cells[4].Value != null)
+                    suma += Convert.ToDouble(fila.Cells["Monto"].Value);
+            }
+            return suma;
+        }
+
        
 
         private void DataGridViewFactura_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             
-            
-       //            Dim ds2 As DataSet
-       // Dim objFacturaNE As New FacturaNE
-       // Dim objFacturaLN As New FacturaLN
-       // Dim objItemLN As New ItemLN
-            
-
-       //objFacturaNE.numfac = txtNumFac.Text
-       // ds2 = objItemLN.MostrarItem(objFacturaNE)
-       // DataGridViewItem.DataSource = ds2.Tables(0)
-
         }
         private void comboBoxProducto_SelectionChangeCommitted_1(object sender, EventArgs e)
         {
@@ -235,12 +199,20 @@ namespace Interfaces
 
         private void ButtonSalir_Click_1(object sender, EventArgs e)
         {
-            Close();
+
+           Close();
         }
 
         private void ButtonGuardarFactura_Click_1(object sender, EventArgs e)
         {
-            ObjetoFacturaNE.NumeroFactura = Convert.ToInt32(textBoxNumeroFactura.Text);
+
+             DialogResult r = MessageBox.Show("¿Desea guardar la factura?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+                if (comboBoxNumeroFactura.Text != "" && DataTimePickerFecha.Text != "" && comboBoxNombreProveedor.Text != "" && comboBoxNumeroProveedor.Text != "" && textBoxTotal.Text != "" && comboBoxCodigoProducto.Text!="" && comboBoxProducto.Text!="" && textBoxCantidad.Text!="" && comboBoxPrecioCosto.Text!="" && textBoxTotalProducto.Text!="")
+                {
+                       ObjetoFacturaNE.NumeroFactura = Convert.ToInt32(comboBoxNumeroFactura.Text);
             ObjetoFacturaNE.Fecha = DataTimePickerFecha.Value;
             ObjetoFacturaNE.NombreProveedor = comboBoxNombreProveedor.Text;
             ObjetoFacturaNE.NumeroProveedor = Convert.ToInt32(comboBoxNumeroProveedor.Text);
@@ -251,6 +223,7 @@ namespace Interfaces
             int i = 0;
             while (i < dataGridViewItem.RowCount - 1)
             {
+
                 ObjetoItemFacturaNE.IdProducto = Convert.ToInt32(dataGridViewItem.Rows[i].Cells[0].Value.ToString());
                 ObjetoItemFacturaNE.NombreProducto = dataGridViewItem.Rows[i].Cells[1].Value.ToString();
                 ObjetoItemFacturaNE.Cantidad = Convert.ToInt32(dataGridViewItem.Rows[i].Cells[2].Value.ToString());
@@ -260,48 +233,97 @@ namespace Interfaces
 
                 ObjetoItemFacturaLN.AgregarItemFactura(ObjetoItemFacturaNE);
 
-                i = i + 1;
-            }
-
-
-            //DataGridViewFactura.DataSource = ObjetoFacturaLN.MostrarFactura();
-            MessageBox.Show("Factura guardada con éxito");
+                i = i + 1;                       
+                       
             DataGridViewFactura.DataSource = ObjetoFacturaLN.MostrarFactura();
+            ButtonGuardarFactura.Enabled = false;
+            }
+                }
+                else
 
+                    MessageBox.Show("Existen campos vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
+            }
+            else if (r == DialogResult.No)
+            {
+            }
+            dataGridViewItem.Rows.Clear();
             LimpiarCampos();
+            MessageBox.Show("Factura guardada con éxito");
+        
         }
 
         private void ButtonNuevoItem_Click_1(object sender, EventArgs e)
         {
-            dataGridViewItem.Rows.Add(comboBoxCodigoProducto.Text, comboBoxProducto.Text, textBoxCantidad.Text, comboBoxPrecioCosto.Text, textBoxTotalProducto.Text, textBoxNumeroFactura2.Text);
+            
+
+            dataGridViewItem.Rows.Add(  comboBoxCodigoProducto.Text, comboBoxProducto.Text, textBoxCantidad.Text, comboBoxPrecioCosto.Text, textBoxTotalProducto.Text, textBoxNumeroFactura2.Text);
 
             textBoxTotal.Text = "";
             textBoxTotal.Text += SumarImportes();
+
+            ButtonGuardarFactura.Enabled = true;
+
         }
 
         private void ButtonModificarFactura_Click(object sender, EventArgs e)
         {
+            DialogResult r = MessageBox.Show("¿Desea modificar la factura?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+
+                if (comboBoxNumeroFactura.Text != "")
+                {
+
+                    ObjetoFacturaNE.NumeroFactura = Convert.ToInt32(comboBoxNumeroFactura.Text);
+                    ObjetoFacturaNE.Fecha = DataTimePickerFecha.Value;
+                    ObjetoFacturaNE.NombreProveedor = comboBoxNombreProveedor.Text;
+                    ObjetoFacturaNE.NumeroProveedor = Convert.ToInt32(comboBoxNumeroProveedor.Text);
+                    ObjetoFacturaNE.TotalImporte = Convert.ToDouble(SumarImportes()); // Convert.ToInt32(textBoxTotalProducto.Text);
+
+                    ObjetoFacturaLN.ModificarFactura(ObjetoFacturaNE);
+
+                    MessageBox.Show("Factura modificada con éxito");
+                    DataGridViewFactura.DataSource = ObjetoFacturaLN.MostrarFactura();
+
+                    LimpiarCampos();
+                    ButtonModificarFactura.Enabled = false;
+                    ButtonGuardarFactura.Enabled = false;
+                   
+                }
+                else
+
+                    MessageBox.Show("Existen campos vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            else if (r == DialogResult.No)
+            {
+            }
 
         }
 
         private void ButtonLimpiarCampos_Click_1(object sender, EventArgs e)
         {
             LimpiarCampos();
+            ButtonNuevoItem.Enabled = true;
         }
 
         private void DataGridViewFactura_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             DataTimePickerFecha.Text = DataGridViewFactura.Rows[e.RowIndex].Cells["Fecha"].Value.ToString();
-            textBoxNumeroFactura.Text = DataGridViewFactura.Rows[e.RowIndex].Cells["NumeroFactura"].Value.ToString();
+            comboBoxNumeroFactura.Text = DataGridViewFactura.Rows[e.RowIndex].Cells["NumeroFactura"].Value.ToString();
             comboBoxNumeroProveedor.Text = DataGridViewFactura.Rows[e.RowIndex].Cells["NumeroProveedor"].Value.ToString();
             comboBoxNombreProveedor.Text = DataGridViewFactura.Rows[e.RowIndex].Cells["NombreProveedor"].Value.ToString();
             textBoxTotal.Text = DataGridViewFactura.Rows[e.RowIndex].Cells["TotalImporte"].Value.ToString();
 
-            //    comboBoxCodigoProducto.Text= DataGridViewItem.Rows[e.RowIndex].Cells["IDProducto"].Value.ToString();
-
-            ObjetoFacturaNE.NumeroFactura = Convert.ToInt32(textBoxNumeroFactura.Text);
+            ObjetoFacturaNE.NumeroFactura = Convert.ToInt32(comboBoxNumeroFactura.Text);
             dataGridViewVerItems.DataSource = ObjetoItemFacturaLN.MostrarItemFactura(ObjetoFacturaNE.NumeroFactura);
+
+            ButtonEliminarFactura.Enabled = true;
+            ButtonModificarFactura.Enabled = true;
+            ButtonGuardarFactura.Enabled = false;
+            ButtonNuevoItem.Enabled = false;
         }
 
         private void comboBoxPrecioCosto_SelectedIndexChanged(object sender, EventArgs e)
@@ -316,12 +338,12 @@ namespace Interfaces
             double? SegundoNumero = double.Parse(comboBoxPrecioCosto.Text);
 
             a = (PrimerNumero * SegundoNumero);
-            textBoxTotalProducto.Text = a.ToString();// Convert.ToString(a);
+            textBoxTotalProducto.Text = a.ToString();
         }
 
         private void textBoxNumeroFactura_TextChanged_2(object sender, EventArgs e)
         {
-            textBoxNumeroFactura2.Text = textBoxNumeroFactura.Text;
+            textBoxNumeroFactura2.Text = comboBoxNumeroFactura.Text;
         }
 
         private void DataGridViewFactura_Click(object sender, EventArgs e)
@@ -342,7 +364,6 @@ namespace Interfaces
 
         private void comboBoxCodigoProducto_SelectedIndexChanged_1(object sender, EventArgs e)
         {
-       //     LlenarComboNombreProducto(Convert.ToInt32(comboBoxCodigoProducto.Text));
 
         }
 
@@ -389,6 +410,10 @@ namespace Interfaces
             comboBoxPrecioCosto.Text = dataGridViewVerItems.Rows[e.RowIndex].Cells["PrecioCosto"].Value.ToString();
             textBoxTotalProducto.Text = dataGridViewVerItems.Rows[e.RowIndex].Cells["Monto"].Value.ToString();
             textBoxNumeroFactura2.Text = dataGridViewVerItems.Rows[e.RowIndex].Cells["NumeroFactura"].Value.ToString();
+
+            ButtonEliminarFactura.Enabled = true;
+            ButtonModificarFactura.Enabled = true;
+            ButtonGuardarFactura.Enabled = false;
         }
 
         private void textBoxTotalProducto_TextChanged(object sender, EventArgs e)
@@ -398,16 +423,147 @@ namespace Interfaces
 
         private void ButtonEliminarFactura_Click(object sender, EventArgs e)
         {
-            ObjetoItemFacturaLN.EliminarItemFactura(Convert.ToInt32(textBoxNumeroFactura.Text));
-            DataGridViewFactura.DataSource = ObjetoFacturaLN.MostrarFactura();
-            ObjetoFacturaNE.NumeroFactura = Convert.ToInt32(textBoxNumeroFactura.Text);
+
+            DialogResult r = MessageBox.Show("¿Desea eliminar la factura?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+                if (comboBoxNumeroFactura.Text != "" && comboBoxNumeroProveedor.Text != "" && comboBoxNombreProveedor.Text != "" && DataTimePickerFecha.Text!="")
+                {
+
+             ObjetoItemFacturaLN.EliminarItemFactura(Convert.ToInt32(comboBoxNumeroFactura.Text));
+            ObjetoFacturaNE.NumeroFactura = Convert.ToInt32(comboBoxNumeroFactura.Text);
             ObjetoFacturaLN.EliminarFactura(ObjetoFacturaNE);
-  
+            DataGridViewFactura.DataSource = ObjetoFacturaLN.MostrarFactura();
+            dataGridViewVerItems.DataSource = ObjetoItemFacturaLN.MostrarItemFactura(ObjetoFacturaNE.NumeroFactura);
+
             MessageBox.Show("Factura eliminada con éxito");
             LimpiarCampos();
+
+            ButtonNuevoItem.Enabled = true;
+           
+                }
+                 else
+                
+                    MessageBox.Show("Seleccione factura", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                if (r == DialogResult.No)
+                {
+                }
+
+                }
+            ButtonEliminarFactura.Enabled = false;
+            ButtonModificarFactura.Enabled = false;
+
+
         }
+        // ejemplo para pruebas unitarias 
+        //public  int sumar(int numero1, int numero2)
+        //{
+        //    int suma = 0;
+        //    suma = numero1 + numero2;
+          
+        //        return suma;
+        //}
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonModificarItem_Click(object sender, EventArgs e)
+        {
+            DialogResult r = MessageBox.Show("¿Desea modificar el item?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (r == DialogResult.Yes)
+            {
+
+                if ( comboBoxCodigoProducto.Text!="" && comboBoxProducto.Text!="" && textBoxCantidad.Text!="" && comboBoxPrecioCosto.Text!="" && textBoxTotalProducto.Text!="")   
+                {
+
+                    ObjetoItemFacturaNE.IdProducto = Convert.ToInt32(comboBoxCodigoProducto.Text);
+                    ObjetoItemFacturaNE.NombreProducto = comboBoxProducto.Text;
+                    ObjetoItemFacturaNE.Cantidad =Convert.ToInt32(textBoxCantidad.Text);
+                    ObjetoItemFacturaNE.PrecioCosto = Convert.ToDouble(comboBoxPrecioCosto.Text);
+                    ObjetoItemFacturaNE.Monto =Convert.ToDouble(textBoxTotalProducto.Text);
+                    ObjetoItemFacturaNE.NumeroFactura =Convert.ToInt32(textBoxNumeroFactura2.Text);
+
+                    ObjetoItemFacturaLN.ModificarItemFactura(ObjetoItemFacturaNE);
+
+                    MessageBox.Show("Item modificado con éxito");
+                    dataGridViewItem.DataSource = ObjetoItemFacturaLN.MostrarItemFactura(ObjetoItemFacturaNE.NumeroFactura);
+                    DataGridViewFactura.DataSource = ObjetoFacturaLN.MostrarFactura();
+
+                    textBoxTotal.Text = "";
+                    textBoxTotal.Text += SumarImportes2();
+
+                    ObjetoFacturaNE.NumeroFactura = Convert.ToInt32(comboBoxNumeroFactura.Text);
+                    ObjetoFacturaNE.Fecha = DataTimePickerFecha.Value;
+                    ObjetoFacturaNE.NombreProveedor = comboBoxNombreProveedor.Text;
+                    ObjetoFacturaNE.NumeroProveedor = Convert.ToInt32(comboBoxNumeroProveedor.Text);
+                    ObjetoFacturaNE.TotalImporte = Convert.ToDouble(SumarImportes2()); // Convert.ToInt32(textBoxTotalProducto.Text);
+
+                    ObjetoFacturaLN.ModificarFactura(ObjetoFacturaNE);
+
+                    dataGridViewVerItems.DataSource = null;
+                    LimpiarCampos();
+                    ButtonModificarFactura.Enabled = false;
+                    ButtonGuardarFactura.Enabled = false;
+                    ButtonNuevoItem.Enabled = true;
+
+                    
+                }
+                else
+
+                    MessageBox.Show("Existen campos vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            else if (r == DialogResult.No)
+            {
+            }
+        }
+
+        private void ButtonEliminarItem_Click(object sender, EventArgs e)
+        {
+
+            if (comboBoxCodigoProducto.Text != "" && comboBoxProducto.Text != "" && textBoxCantidad.Text != "" && comboBoxPrecioCosto.Text != "" && textBoxTotalProducto.Text != "")
+            {
+
+                ObjetoItemFacturaNE.IdProducto = Convert.ToInt32(comboBoxCodigoProducto.Text);
+                ObjetoItemFacturaNE.NombreProducto = comboBoxProducto.Text;
+                ObjetoItemFacturaNE.Cantidad = Convert.ToInt32(textBoxCantidad.Text);
+                ObjetoItemFacturaNE.PrecioCosto = Convert.ToDouble(comboBoxPrecioCosto.Text);
+                ObjetoItemFacturaNE.Monto = Convert.ToDouble(textBoxTotalProducto.Text);
+                ObjetoItemFacturaNE.NumeroFactura = Convert.ToInt32(textBoxNumeroFactura2.Text);
+
+                ObjetoItemFacturaLN.EliminarItemFactura(ObjetoItemFacturaNE.NumeroFactura);
+
+            MessageBox.Show("Item eliminado con éxito");
+            LimpiarCampos();
+
+            ButtonNuevoItem.Enabled = true;
+           
+                }
+                 else
+                
+                    MessageBox.Show("Seleccione item", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+
+        private void GroupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void GroupBox4_Enter(object sender, EventArgs e)
+        {
+
+        }
+        }
+
     }
-}
+
 
  
 

@@ -37,16 +37,20 @@ namespace Interfaces
         private void ButtonLimpiar_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+            ButtonModificar.Enabled = false;
+            ButtonGuardar.Enabled = true;
         }
 
         private void LimpiarCampos()
         {
             
             textBoxNombreEmpresa.Text = string.Empty;
-           // comboBoxNumeroProveedor.Text = string.Empty;
             comboBoxRubro.Text = string.Empty;
             textBoxTelefonoVendedor.Text = string.Empty;
             textBoxTelefonoRepartidor.Text = string.Empty;
+
+            comboBoxNumeroProveedor.DataSource = ObjetoProveedorLN.TraerUltimoNumeroProveedor();
+            comboBoxNumeroProveedor.DisplayMember = "NumeroProveedor";
         }
 
         private void ButtonGuardar_Click(object sender, EventArgs e)
@@ -64,17 +68,16 @@ namespace Interfaces
                     ObjetoProveedorNE.Rubro = comboBoxRubro.Text;
                     ObjetoProveedorNE.TelefonoVendedor = Convert.ToInt32(textBoxTelefonoVendedor.Text);
                     ObjetoProveedorNE.TelefonoRepartidor = Convert.ToInt32(textBoxTelefonoRepartidor.Text);
-                    //if( ObjetoProveedorNE.NombreEmpresa !="" &&  ObjetoProveedorNE.NumeroProveedor !="" &&  ObjetoProveedorNE.Rubro !="" &&  ObjetoProveedorNE.TelefonoVendedor !=null &&  ObjetoProveedorNE.TelefonoRepartidor !=null)
 
                     ObjetoProveedorLN.AgregarProveedor(ObjetoProveedorNE);
                     MessageBox.Show("Proveedor guardado con éxito");
                     LimpiarCampos();
                     dataGridViewProveedor.DataSource = ObjetoProveedorLN.MostrarProveedor();
 
-                    comboBoxNumeroProveedor.DataSource = ObjetoProveedorLN.TraerUltimoNumeroProveedor();
-                    comboBoxNumeroProveedor.DisplayMember = "NumeroProveedor";
-
+                    
                     LimpiarCampos();
+
+                   
                 }
                 else
 
@@ -83,16 +86,7 @@ namespace Interfaces
             }
             else if (r == DialogResult.No)
             {
-                // Close();
             }
-
-            //else
-            //{
-            //    MessageBox.Show("Existen campos vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-
-            //}
-
             
         }
 
@@ -101,8 +95,6 @@ namespace Interfaces
             comboBoxNumeroProveedor.DataSource = ObjetoProveedorLN.TraerUltimoNumeroProveedor();
             comboBoxNumeroProveedor.DisplayMember = "NumeroProveedor";
 
-
-          //  comboBoxNumeroProveedor.KeyPress += new KeyPressEventHandler(ValidarNumeroProveedor);
             textBoxTelefonoVendedor.KeyPress += new KeyPressEventHandler(ValidarTelefonoVendedor);
             textBoxTelefonoRepartidor.KeyPress += new KeyPressEventHandler(ValidarTelefonoRepartidor);
 
@@ -110,7 +102,8 @@ namespace Interfaces
             comboBoxRubro.DataSource = ObjetoProveedorLN.LlenarComboRubro();
             comboBoxRubro.DisplayMember = "NombreRubro";
 
-      //      TraerUltimoNumeroProveedor();
+            ButtonModificar.Enabled = false;
+
         }
 
         private void ButtonModificar_Click(object sender, EventArgs e)
@@ -138,7 +131,8 @@ namespace Interfaces
             comboBoxNumeroProveedor.DataSource = ObjetoProveedorLN.TraerUltimoNumeroProveedor();
             comboBoxNumeroProveedor.DisplayMember = "NumeroProveedor";
 
-
+            ButtonModificar.Enabled = false;
+            ButtonGuardar.Enabled = true;
                 }
                 else
 
@@ -147,11 +141,7 @@ namespace Interfaces
             }
             else if (r == DialogResult.No)
             {
-                // Close();
             }
-
-
-            
         }
 
         private void dataGridViewProveedor_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -163,6 +153,7 @@ namespace Interfaces
             textBoxTelefonoRepartidor.Text = dataGridViewProveedor.Rows[e.RowIndex].Cells["TelefonoRepartidor"].Value.ToString();
 
             ButtonGuardar.Enabled = false;
+            ButtonModificar.Enabled = true;
 
         }
 
@@ -189,6 +180,9 @@ namespace Interfaces
 
                 comboBoxNumeroProveedor.DataSource = ObjetoProveedorLN.TraerUltimoNumeroProveedor();
             comboBoxNumeroProveedor.DisplayMember = "NumeroProveedor";
+
+            ButtonModificar.Enabled = false;
+            ButtonGuardar.Enabled = true;
                 }
                  else
                 
@@ -198,9 +192,7 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
-
                 }
             }
 
@@ -259,25 +251,5 @@ namespace Interfaces
             rubro.ShowDialog();
             
         }
-
-    //    private int TraerUltimoNumeroProveedor()
-    //{
-
-    //   // dataGridViewProveedor.DataSource = ObjetoProveedorLN.TraerUltimoNumeroProveedor();
-        
-
-             
-    //                   //int a =Convert.ToInt16(ObjetoProveedorLN.TraerUltimoNumeroProveedor());
-
-    //                   //return textBoxNumeroProveedor.Text =a;
-            
-    //}
-        
-
-   //  ObjetoProveedorLN.AgregarProveedor(ObjetoProveedorNE);
-
-    //   textBoxNumeroProveedor.Text= ; 
-      
-    
     }
 }

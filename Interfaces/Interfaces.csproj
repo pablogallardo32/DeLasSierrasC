@@ -115,12 +115,6 @@
     <Compile Include="Tipo.Designer.cs">
       <DependentUpon>Tipo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Venta.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Venta.Designer.cs">
-      <DependentUpon>Venta.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Detalle.resx">
       <DependentUpon>Detalle.cs</DependentUpon>
     </EmbeddedResource>

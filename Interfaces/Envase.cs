@@ -30,14 +30,12 @@ namespace Interfaces
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-          //  comboBoxIDEnvase.Text = string.Empty;
             textBoxNombreEnvase.Text = string.Empty;
             buttonGuardar.Enabled = true;
 
             comboBoxIDEnvase.DataSource = ObjetoEnvaseLN.TraerUltimoIDEnvase();
             comboBoxIDEnvase.DisplayMember = "IDEnvase";
-         //   comboBoxIDEnvase.DataSource = ObjetoEnvaseLN.TraerUltimoIDEnvase();
-          //  comboBoxIDEnvase.DisplayMember = "IDEnvase";
+     
         }
 
         private void Envase_Load(object sender, EventArgs e)
@@ -49,6 +47,8 @@ namespace Interfaces
             comboBoxIDEnvase.KeyPress += new KeyPressEventHandler(ValidarIDEnvase);
 
             dataGridViewEnvase.DataSource = ObjetoEnvaseLN.MostrarEnvase();
+
+            buttonModificar.Enabled = false;
         }
 
         private void buttonGuardar_Click(object sender, EventArgs e)
@@ -79,7 +79,7 @@ namespace Interfaces
             }
             else if (r == DialogResult.No)
             {
-                // Close();
+                
             }
 
         }
@@ -111,7 +111,7 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                 //   Close();
+                 
                 }
 
                 else
@@ -151,7 +151,7 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
+                    
                 }
 
                 }
@@ -180,6 +180,8 @@ namespace Interfaces
             textBoxNombreEnvase.Text = dataGridViewEnvase.Rows[e.RowIndex].Cells["NombreEnvase"].Value.ToString();
 
             buttonGuardar.Enabled = false;
+            buttonModificar.Enabled = true;
+
 
         }
         }

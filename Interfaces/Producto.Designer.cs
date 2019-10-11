@@ -33,7 +33,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Producto));
             this.gpbNuevoPro = new System.Windows.Forms.GroupBox();
-            this.textBoxIdProducto = new System.Windows.Forms.TextBox();
             this.Label5 = new System.Windows.Forms.Label();
             this.Label7 = new System.Windows.Forms.Label();
             this.comboBoxRubro = new System.Windows.Forms.ComboBox();
@@ -89,6 +88,7 @@
             this.buttonAgregarEnvase = new System.Windows.Forms.Button();
             this.Label15 = new System.Windows.Forms.Label();
             this.Label6 = new System.Windows.Forms.Label();
+            this.comboBoxIDProducto = new System.Windows.Forms.ComboBox();
             this.gpbNuevoPro.SuspendLayout();
             this.GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducto)).BeginInit();
@@ -100,7 +100,7 @@
             // 
             // gpbNuevoPro
             // 
-            this.gpbNuevoPro.Controls.Add(this.textBoxIdProducto);
+            this.gpbNuevoPro.Controls.Add(this.comboBoxIDProducto);
             this.gpbNuevoPro.Controls.Add(this.Label5);
             this.gpbNuevoPro.Controls.Add(this.Label7);
             this.gpbNuevoPro.Controls.Add(this.comboBoxRubro);
@@ -116,13 +116,6 @@
             this.gpbNuevoPro.TabIndex = 21;
             this.gpbNuevoPro.TabStop = false;
             this.gpbNuevoPro.Text = "Registrar nuevo producto";
-            // 
-            // textBoxIdProducto
-            // 
-            this.textBoxIdProducto.Location = new System.Drawing.Point(87, 28);
-            this.textBoxIdProducto.Name = "textBoxIdProducto";
-            this.textBoxIdProducto.Size = new System.Drawing.Size(259, 20);
-            this.textBoxIdProducto.TabIndex = 1;
             // 
             // Label5
             // 
@@ -148,7 +141,7 @@
             this.comboBoxRubro.FormattingEnabled = true;
             this.comboBoxRubro.Location = new System.Drawing.Point(88, 58);
             this.comboBoxRubro.Name = "comboBoxRubro";
-            this.comboBoxRubro.Size = new System.Drawing.Size(259, 21);
+            this.comboBoxRubro.Size = new System.Drawing.Size(258, 21);
             this.comboBoxRubro.TabIndex = 2;
             // 
             // GroupBox3
@@ -304,25 +297,25 @@
             this.comboBoxEnvasedesc.FormattingEnabled = true;
             this.comboBoxEnvasedesc.Location = new System.Drawing.Point(63, 140);
             this.comboBoxEnvasedesc.Name = "comboBoxEnvasedesc";
-            this.comboBoxEnvasedesc.Size = new System.Drawing.Size(259, 21);
+            this.comboBoxEnvasedesc.Size = new System.Drawing.Size(258, 21);
             this.comboBoxEnvasedesc.TabIndex = 7;
             this.comboBoxEnvasedesc.TextChanged += new System.EventHandler(this.comboBoxEnvasedesc_TextChanged);
             // 
             // comboBoxSabordesc
             // 
             this.comboBoxSabordesc.FormattingEnabled = true;
-            this.comboBoxSabordesc.Location = new System.Drawing.Point(62, 113);
+            this.comboBoxSabordesc.Location = new System.Drawing.Point(63, 113);
             this.comboBoxSabordesc.Name = "comboBoxSabordesc";
-            this.comboBoxSabordesc.Size = new System.Drawing.Size(259, 21);
+            this.comboBoxSabordesc.Size = new System.Drawing.Size(258, 21);
             this.comboBoxSabordesc.TabIndex = 6;
             this.comboBoxSabordesc.TextChanged += new System.EventHandler(this.comboBoxSabordesc_TextChanged);
             // 
             // comboBoxDetalledesc
             // 
             this.comboBoxDetalledesc.FormattingEnabled = true;
-            this.comboBoxDetalledesc.Location = new System.Drawing.Point(62, 86);
+            this.comboBoxDetalledesc.Location = new System.Drawing.Point(63, 86);
             this.comboBoxDetalledesc.Name = "comboBoxDetalledesc";
-            this.comboBoxDetalledesc.Size = new System.Drawing.Size(259, 21);
+            this.comboBoxDetalledesc.Size = new System.Drawing.Size(258, 21);
             this.comboBoxDetalledesc.TabIndex = 5;
             this.comboBoxDetalledesc.TextChanged += new System.EventHandler(this.comboBoxDetalledesc_TextChanged);
             // 
@@ -331,16 +324,16 @@
             this.comboBoxMarcadesc.FormattingEnabled = true;
             this.comboBoxMarcadesc.Location = new System.Drawing.Point(63, 57);
             this.comboBoxMarcadesc.Name = "comboBoxMarcadesc";
-            this.comboBoxMarcadesc.Size = new System.Drawing.Size(259, 21);
+            this.comboBoxMarcadesc.Size = new System.Drawing.Size(258, 21);
             this.comboBoxMarcadesc.TabIndex = 4;
             this.comboBoxMarcadesc.TextChanged += new System.EventHandler(this.comboBoxMarcadesc_TextChanged);
             // 
             // comboBoxTipodesc
             // 
             this.comboBoxTipodesc.FormattingEnabled = true;
-            this.comboBoxTipodesc.Location = new System.Drawing.Point(62, 26);
+            this.comboBoxTipodesc.Location = new System.Drawing.Point(63, 26);
             this.comboBoxTipodesc.Name = "comboBoxTipodesc";
-            this.comboBoxTipodesc.Size = new System.Drawing.Size(259, 21);
+            this.comboBoxTipodesc.Size = new System.Drawing.Size(258, 21);
             this.comboBoxTipodesc.TabIndex = 3;
             this.comboBoxTipodesc.TextChanged += new System.EventHandler(this.comboBoxTipodesc_TextChanged);
             this.comboBoxTipodesc.Click += new System.EventHandler(this.comboBoxTipodesc_Click);
@@ -712,6 +705,15 @@
             this.Label6.TabIndex = 5;
             this.Label6.Text = "Rubro:";
             // 
+            // comboBoxIDProducto
+            // 
+            this.comboBoxIDProducto.Enabled = false;
+            this.comboBoxIDProducto.FormattingEnabled = true;
+            this.comboBoxIDProducto.Location = new System.Drawing.Point(88, 32);
+            this.comboBoxIDProducto.Name = "comboBoxIDProducto";
+            this.comboBoxIDProducto.Size = new System.Drawing.Size(258, 21);
+            this.comboBoxIDProducto.TabIndex = 202;
+            // 
             // Producto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -792,9 +794,9 @@
         internal System.Windows.Forms.Label Label15;
         internal System.Windows.Forms.Label Label11;
         internal System.Windows.Forms.Label Label6;
-        internal System.Windows.Forms.TextBox textBoxIdProducto;
         internal System.Windows.Forms.Label Label5;
         internal System.Windows.Forms.Label Label7;
+        private System.Windows.Forms.ComboBox comboBoxIDProducto;
 
     }
 }

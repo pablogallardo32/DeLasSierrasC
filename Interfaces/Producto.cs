@@ -38,7 +38,10 @@ namespace Interfaces
         {
 
 
-            ObjetoProductoNE.IDProducto = Convert.ToInt32(textBoxIdProducto.Text);
+            DialogResult r = MessageBox.Show("¿Desea modificar el producto?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+
+            ObjetoProductoNE.IDProducto = Convert.ToInt32(comboBoxIDProducto.Text);
             ObjetoProductoNE.Rubro = comboBoxRubro.Text;
             ObjetoProductoNE.Tipo = comboBoxTipodesc.Text;
             ObjetoProductoNE.Marca = comboBoxMarcadesc.Text;
@@ -64,31 +67,31 @@ namespace Interfaces
                         ObjetoProductoNE.Medicion = "U";
             }
 
-            DialogResult r = MessageBox.Show("¿Desea modificar el producto?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
             if (r == DialogResult.Yes)
             {
-                if (textBoxIdProducto.Text != "" && comboBoxRubro.Text != "" && comboBoxTipodesc.Text != "" && comboBoxMarcadesc.Text != "" && comboBoxDetalledesc.Text != "" && comboBoxSabordesc.Text != "" && comboBoxEnvasedesc.Text != "" && comboBoxMarcadesc.Text != "" && textBoxTamaño.Text != "" && textBoxPrecioCosto.Text != "" && textBoxPrecioVenta.Text != "" && textBoxStockMinimo.Text != "")
+                if (comboBoxIDProducto.Text != "" && comboBoxRubro.Text != "" && comboBoxTipodesc.Text != "" && comboBoxMarcadesc.Text != "" && comboBoxDetalledesc.Text != "" && comboBoxSabordesc.Text != "" && comboBoxEnvasedesc.Text != "" && comboBoxMarcadesc.Text != "" && textBoxTamaño.Text != "" && textBoxPrecioCosto.Text != "" && textBoxPrecioVenta.Text != "" && textBoxStockMinimo.Text != "")
                 {
                     ObjetoProductoLN.ModificarProducto(ObjetoProductoNE);
 
                     MessageBox.Show("Producto modificado con éxito");
                     limpiarCampos();
                     dataGridViewProducto.DataSource = ObjetoProductoLN.MostrarProducto();
+
+                    buttonModificar.Enabled = false;
+                    buttonGuardar.Enabled = true;
+
                 }
+                else
+                MessageBox.Show("Existen campos vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
             }
             else
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
 
-                else
-                {
-                    MessageBox.Show("Existen campos vacios", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-                }
+                
             }
         }
 
@@ -119,12 +122,14 @@ namespace Interfaces
         private void buttonLimpiarCampos_Click(object sender, EventArgs e)
         {
             limpiarCampos();
+            comboBoxIDProducto.DataSource = ObjetoProductoLN.TraerUltimoNumeroProducto();
+            comboBoxIDProducto.DisplayMember = "IDProducto";
         }
 
         public void limpiarCampos()
         {
             comboBoxRubro.Text = string.Empty;
-            textBoxIdProducto.Text = string.Empty;
+            comboBoxIDProducto.Text = string.Empty;
             comboBoxDetalledesc.Text = string.Empty;
             comboBoxEnvasedesc.Text = string.Empty;
             comboBoxMarcadesc.Text = string.Empty;
@@ -138,6 +143,13 @@ namespace Interfaces
             textBoxPrecioVenta.Text = string.Empty;
             textBoxStockMinimo.Text = string.Empty;
             textBoxTamaño.Text = string.Empty;
+
+            buttonModificar.Enabled = false;
+            buttonGuardar.Enabled = true;
+            buttonEliminar.Enabled = false;
+
+            comboBoxIDProducto.DataSource = ObjetoProductoLN.TraerUltimoNumeroProducto();
+            comboBoxIDProducto.DisplayMember = "IDProducto";
         }
 
         private void radioButtonKg_CheckedChanged(object sender, EventArgs e)
@@ -230,7 +242,7 @@ namespace Interfaces
         private void Producto_Load(object sender, EventArgs e)
         {
             dataGridViewProducto.DataSource = ObjetoProductoLN.MostrarProducto();
-            textBoxIdProducto.KeyPress += new KeyPressEventHandler(ValidarCodigo);
+            comboBoxIDProducto.KeyPress += new KeyPressEventHandler(ValidarCodigo);
             textBoxPrecioCosto.KeyPress += new KeyPressEventHandler(ValidarPrecioCosto);
             textBoxPrecioVenta.KeyPress += new KeyPressEventHandler(ValidarPrecioVenta);
             textBoxTamaño.KeyPress += new KeyPressEventHandler(ValidarTamaño);
@@ -254,6 +266,11 @@ namespace Interfaces
             comboBoxEnvasedesc.DataSource = ObjetoProductoLN.LlenarComboEnvase();
             comboBoxEnvasedesc.DisplayMember = "NombreEnvase";
 
+            comboBoxIDProducto.DataSource = ObjetoProductoLN.TraerUltimoNumeroProducto();
+            comboBoxIDProducto.DisplayMember = "IDProducto";
+
+            buttonModificar.Enabled = false;
+            buttonEliminar.Enabled = false;
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -264,15 +281,16 @@ namespace Interfaces
         private void buttonGuardar_Click(object sender, EventArgs e)
         {
 
-            if (textBoxIdProducto.Text != "" && comboBoxRubro.Text != "" && comboBoxTipodesc.Text != "" && comboBoxMarcadesc.Text != "" && comboBoxDetalledesc.Text != "" && comboBoxSabordesc.Text != "" && comboBoxEnvasedesc.Text != "" && comboBoxMarcadesc.Text != "" && textBoxTamaño.Text != "" && textBoxPrecioCosto.Text != "" && textBoxPrecioVenta.Text != "" && textBoxStockMinimo.Text != "")
-            {
-
+            
                 DialogResult r = MessageBox.Show("¿Desea guardar el producto?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (comboBoxIDProducto.Text != "" && comboBoxRubro.Text != "" && comboBoxTipodesc.Text != "" && comboBoxMarcadesc.Text != "" && comboBoxDetalledesc.Text != "" && comboBoxSabordesc.Text != "" && comboBoxEnvasedesc.Text != "" && comboBoxMarcadesc.Text != "" && textBoxTamaño.Text != "" && textBoxPrecioCosto.Text != "" && textBoxPrecioVenta.Text != "" && textBoxStockMinimo.Text != "")
+                {
 
                 if (r == DialogResult.Yes)
                 {
 
-                    ObjetoProductoNE.IDProducto = Convert.ToInt32(textBoxIdProducto.Text);
+                    ObjetoProductoNE.IDProducto = Convert.ToInt32(comboBoxIDProducto.Text);
                     ObjetoProductoNE.Rubro = comboBoxRubro.Text;
                     ObjetoProductoNE.Tipo = comboBoxTipodesc.Text;
                     ObjetoProductoNE.Marca = comboBoxMarcadesc.Text;
@@ -307,18 +325,17 @@ namespace Interfaces
                     dataGridViewProducto.DataSource = ObjetoProductoLN.MostrarProducto();
 
                     limpiarCampos();
+
                 }
 
 
                 else if (r == DialogResult.No)
                 {
-                    // Close();
                 }
             }
             else
             {
                 MessageBox.Show("Existen campos vacíos", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
 
             }
 
@@ -329,14 +346,13 @@ namespace Interfaces
 
         private void dataGridViewProducto_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            textBoxIdProducto.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["IDProducto"].Value.ToString();
+            comboBoxIDProducto.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["IDProducto"].Value.ToString();
             comboBoxRubro.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["Rubro"].Value.ToString();
             comboBoxTipodesc.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["Tipo"].Value.ToString();
             comboBoxMarcadesc.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["Marca"].Value.ToString();
             comboBoxDetalledesc.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["Detalle"].Value.ToString();
             comboBoxSabordesc.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["Sabor"].Value.ToString();
             comboBoxEnvasedesc.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["Envase"].Value.ToString();
-            //comboboxMediciondesc.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["Medicion"].Value.ToString();
             textBoxTamaño.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["Tamaño"].Value.ToString();
             textBoxPrecioCosto.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["PrecioCosto"].Value.ToString();
             textBoxPrecioVenta.Text = dataGridViewProducto.Rows[e.RowIndex].Cells["PrecioVenta"].Value.ToString();
@@ -354,6 +370,9 @@ namespace Interfaces
             if (dataGridViewProducto.Rows[e.RowIndex].Cells["Medicion"].Value.ToString() == "U")
                 radioButtonUnidad.Checked = true;
 
+            buttonModificar.Enabled = true;
+            buttonGuardar.Enabled = false;
+            buttonEliminar.Enabled = true;
 
         }
 
@@ -388,34 +407,35 @@ namespace Interfaces
         {
             {
 
-                ObjetoProductoNE.IDProducto = Convert.ToInt32(textBoxIdProducto.Text);
-                ObjetoProductoNE.Rubro = comboBoxRubro.Text;
-                ObjetoProductoNE.Tipo = comboBoxTipodesc.Text;
-                ObjetoProductoNE.Marca = comboBoxMarcadesc.Text;
-                ObjetoProductoNE.Detalle = comboBoxDetalledesc.Text;
-                ObjetoProductoNE.Sabor = comboBoxSabordesc.Text;
-                ObjetoProductoNE.Envase = comboBoxEnvasedesc.Text;
-                ObjetoProductoNE.Tamaño = textBoxTamaño.Text;
-                ObjetoProductoNE.PrecioCosto = Convert.ToDouble(textBoxPrecioCosto.Text);
-                ObjetoProductoNE.PrecioVenta = Convert.ToDouble(textBoxPrecioVenta.Text);
-                ObjetoProductoNE.StockMinimo = Convert.ToInt32(textBoxStockMinimo.Text);
-                if (radioButtonCubicos.Checked == true)
-                {
-                    ObjetoProductoNE.Medicion = "CC";
-                }
-                else
-                {
-                    if (radioButtonGramos.Checked == true)
-                        ObjetoProductoNE.Medicion = "G";
-                    else
-                        if (radioButtonKg.Checked == true)
-                            ObjetoProductoNE.Medicion = "KG";
-                        else
-                            ObjetoProductoNE.Medicion = "U";
-                }
+               
 
-                if (textBoxIdProducto.Text != "" && comboBoxRubro.Text != "" && comboBoxTipodesc.Text != "" && comboBoxMarcadesc.Text != "" && comboBoxDetalledesc.Text != "" && comboBoxSabordesc.Text != "" && comboBoxEnvasedesc.Text != "" && comboBoxMarcadesc.Text != "" && textBoxTamaño.Text != "" && textBoxPrecioCosto.Text != "" && textBoxPrecioVenta.Text != "" && textBoxStockMinimo.Text != "")
+                if (comboBoxIDProducto.Text != "" && comboBoxRubro.Text != "" && comboBoxTipodesc.Text != "" && comboBoxMarcadesc.Text != "" && comboBoxDetalledesc.Text != "" && comboBoxSabordesc.Text != "" && comboBoxEnvasedesc.Text != "" && comboBoxMarcadesc.Text != "" && textBoxTamaño.Text != "" && textBoxPrecioCosto.Text != "" && textBoxPrecioVenta.Text != "" && textBoxStockMinimo.Text != "")
                 {
+                    ObjetoProductoNE.IDProducto = Convert.ToInt32(comboBoxIDProducto.Text);
+                    ObjetoProductoNE.Rubro = comboBoxRubro.Text;
+                    ObjetoProductoNE.Tipo = comboBoxTipodesc.Text;
+                    ObjetoProductoNE.Marca = comboBoxMarcadesc.Text;
+                    ObjetoProductoNE.Detalle = comboBoxDetalledesc.Text;
+                    ObjetoProductoNE.Sabor = comboBoxSabordesc.Text;
+                    ObjetoProductoNE.Envase = comboBoxEnvasedesc.Text;
+                    ObjetoProductoNE.Tamaño = textBoxTamaño.Text;
+                    ObjetoProductoNE.PrecioCosto = Convert.ToDouble(textBoxPrecioCosto.Text);
+                    ObjetoProductoNE.PrecioVenta = Convert.ToDouble(textBoxPrecioVenta.Text);
+                    ObjetoProductoNE.StockMinimo = Convert.ToInt32(textBoxStockMinimo.Text);
+                    if (radioButtonCubicos.Checked == true)
+                    {
+                        ObjetoProductoNE.Medicion = "CC";
+                    }
+                    else
+                    {
+                        if (radioButtonGramos.Checked == true)
+                            ObjetoProductoNE.Medicion = "G";
+                        else
+                            if (radioButtonKg.Checked == true)
+                                ObjetoProductoNE.Medicion = "KG";
+                            else
+                                ObjetoProductoNE.Medicion = "U";
+                    }
 
                     DialogResult r = MessageBox.Show("¿Desea eliminar el producto?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
@@ -425,12 +445,16 @@ namespace Interfaces
                         dataGridViewProducto.DataSource = ObjetoProductoLN.MostrarProducto();
                         MessageBox.Show("Producto eliminado con éxito");
 
+                        limpiarCampos();
+                        buttonModificar.Enabled = false;
+                        buttonGuardar.Enabled = true;
+
                     }
 
 
                     else if (r == DialogResult.No)
                     {
-                        // Close();
+                       
                     }
                 }
                 else

@@ -50,7 +50,6 @@ namespace Interfaces
             }
             else if (r == DialogResult.No)
             {
-                // Close();
             }
 
         }
@@ -84,7 +83,6 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                 //   Close();
                 }
 
                 else
@@ -125,7 +123,6 @@ namespace Interfaces
             {
                 if (r == DialogResult.No)
                 {
-                    //   Close();
                 }
 
                 }
@@ -175,6 +172,7 @@ namespace Interfaces
 
             dataGridViewSabor.DataSource = ObjetoSaborLN.MostrarSabor();
 
+            buttonModificar.Enabled = false;
         }
 
         private void dataGridViewSabor_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -183,6 +181,8 @@ namespace Interfaces
             textBoxNombreSabor.Text = dataGridViewSabor.Rows[e.RowIndex].Cells["NombreSabor"].Value.ToString();
 
             buttonGuardar.Enabled = false;
+            buttonModificar.Enabled = true;
+
         }
         }      
     }
