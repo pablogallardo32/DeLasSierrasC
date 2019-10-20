@@ -70,7 +70,7 @@ CREATE TABLE [dbo].[Producto](
 	[Sabor] [nvarchar](50) NULL,
 	[Envase] [nvarchar](50) NULL,
 	[Medicion] [nvarchar](50) NULL,
-	[Tamaño] [nvarchar](50) NULL,
+	[TamaÃ±o] [nvarchar](50) NULL,
 	[PrecioCosto] [float] NULL,
 	[PrecioVenta] [float] NULL,
 	[StockMinimo] [int] NULL,
@@ -92,8 +92,8 @@ CREATE TABLE [dbo].[ItemFactura](
 	[IdProducto] [int] NOT NULL,
 	[NombreProducto] [nvarchar](100) NOT NULL,
 	[Cantidad] [int] NULL,
-	[PrecioCosto] [int] NULL,
-	[Monto] [int] NOT NULL,
+	[PrecioCosto] [float] NULL,
+	[Monto] [float] NOT NULL,
 	[NumeroFactura] [int] NULL
 ) ON [PRIMARY]
 GO
